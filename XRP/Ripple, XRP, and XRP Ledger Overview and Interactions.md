@@ -75,9 +75,9 @@ The XRP LCP’s safety (fork prevention) and liveness (forward progress) depend 
 #### Safety (Fork Prevention)
 To prevent forks (two honest nodes validating conflicting ledgers), the UNL overlap must satisfy specific conditions. Assuming Byzantine accountability (nodes cannot send conflicting messages undetected), Proposition 1 states [1, p. 11]:
 
-\[
+$$\[
 \left|\mathrm{UNL}_i \cap \mathrm{UNL}_j\right| > n_i - q_i + n_j - q_j
-\]
+\]$$
 
 Where:
 - \(\mathrm{UNL}_i\): Node \(\mathcal{P}_i\)’s Unique Node List.
