@@ -24,7 +24,7 @@ The whitepaper compares blockchain types:
 | Membership            | Open to all       | Restricted         | Participation Open, Hosting Restricted |
 | Interoperability      | No                | No                 | Yes               |
 
-**Mermaid Diagram: Blockchain Comparison**
+**Diagram: Blockchain Comparison**
 
 ```mermaid
 graph TD
@@ -52,7 +52,7 @@ Public blockchains expose transaction data, risking de-anonymization, and lack a
 
 XDC supports both public and private network states. The public state is shared across all nodes, while private states are restricted to authorized members. Hashes of private transactions are stored on the public state for immutability.
 
-**Mermaid Diagram: XDC Network Architecture**
+**Diagram: XDC Network Architecture**
 
 ```mermaid
 graph TD
@@ -86,7 +86,7 @@ The architecture comprises several components:
 - **Resource Manager**: Connects to IoT devices for resource monitoring.
 - **Augur Service**: Acts as an oracle for external data.
 
-**Mermaid Diagram: XDC Blockchain Components**
+**Diagram: XDC Blockchain Components**
 
 ```mermaid
 classDiagram
@@ -123,7 +123,7 @@ The XDC network includes four node types:
 - **Light Node**: Stores private state locally, accessing public state via full nodes.
 - **Auditing Node**: Limited functionality for regulation and auditing.
 
-**Mermaid Diagram: XDC Node Types**
+**Diagram: XDC Node Types**
 
 ```mermaid
 graph TD
@@ -157,7 +157,7 @@ The whitepaper describes a use case involving farmers in Ghana purchasing a harv
 5. Escrow contracts protect against non-payment.
 6. The blockchain records value generated and loan repayment.
 
-**Mermaid Diagram: Use Case Flow**
+**Diagram: Use Case Flow**
 
 ```mermaid
 sequenceDiagram
