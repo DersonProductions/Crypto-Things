@@ -1,3 +1,7 @@
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 # Ripple, XRP, and XRP Ledger: Overview and Interactions
 
 This document provides a detailed analysis of **Ripple**, **XRP**, and the **XRP Ledger**, clarifying their roles, interactions, and relationship with the XRP Ledger’s blockchain-like structure. It is based on primary sources [1, 2, 3] and referenced links [4, 5]. Mermaid diagrams illustrate the differences and similarities, while LaTeX explains the mathematical conditions for the XRP Ledger Consensus Protocol (XRP LCP).
@@ -75,30 +79,23 @@ The XRP LCP’s safety (fork prevention) and liveness (forward progress) depend 
 #### Safety (Fork Prevention)
 To prevent forks (two honest nodes validating conflicting ledgers), the UNL overlap must satisfy specific conditions. Assuming Byzantine accountability (nodes cannot send conflicting messages undetected), Proposition 1 states [1, p. 11]:
 
-$$
-\left|\mathrm{UNL}_i \cap \mathrm{UNL}_j\right| > n_i - q_i + n_j - q_j
-$$
+$$ \left|\mathrm{UNL}_i \cap \mathrm{UNL}_j\right| > n_i - q_i + n_j - q_j $$
 
 Where:
-- $\(\mathrm{UNL}_i\)$: Node $$\(\mathcal{P}_i\)’s$$ Unique Node List.
-- $\(n_i = \left|\mathrm{UNL}_i\right|\)$: Size of $\(\mathrm{UNL}_i\)$.
-- $\(q_i = \lceil 0.8 n_i \rceil\)$: Quorum (80% of UNL).
-- $\(n_i - q_i\)$: Maximum Byzantine faults in $\(\mathrm{UNL}_i\)$.
+- $\mathrm{UNL}_i$: Node $\mathcal{P}_i$’s Unique Node List.
+- $n_i = \left|\mathrm{UNL}_i\right|$: Size of $\mathrm{UNL}_i$.
+- $q_i = \lceil 0.8 n_i \rceil$: Quorum (80% of UNL).
+- $n_i - q_i$: Maximum Byzantine faults in $\mathrm{UNL}_i$.
 
 With 80% quorums, this requires >41% overlap of the average UNL size [1, p. 12]. Without Byzantine accountability, Proposition 4 requires [1, p. 14]:
 
-$$
-\left|\mathrm{UNL}_i \cap \mathrm{UNL}_j\right| > (n_i - q_i) + (n_j - q_j) + t_{i,j}
-$$
+$$ \left|\mathrm{UNL}_i \cap \mathrm{UNL}_j\right| > (n_i - q_i) + (n_j - q_j) + t_{i,j} $$
 
-Where $\(t_{i,j} = \min(t_i, t_j, \left|\mathrm{UNL}_i \cap \mathrm{UNL}_j\right|)\)$, and $\(t_i \leq n_i - q_i\)$. This yields ~61% overlap [1, p. 14]. For full safety (no conflicting ledgers at any sequence number), Theorem 8 requires [1, p. 18]:
+Where $t_{i,j} = \min(t_i, t_j, \left|\mathrm{UNL}_i \cap \mathrm{UNL}_j\right|)$, and $t_i \leq n_i - q_i$. This yields ~61% overlap [1, p. 14]. For full safety (no conflicting ledgers at any sequence number), Theorem 8 requires [1, p. 18]:
 
-$$
-\left|\mathrm{UNL}_i \cap \mathrm{UNL}_j\right| > \frac{n_j}{2} + n_i - q_i + t_{i,j}
-$$
+$$ \left|\mathrm{UNL}_i \cap \mathrm{UNL}_j\right| > \frac{n_j}{2} + n_i - q_i + t_{i,j} $$
 
 This demands ~90% overlap with 80% quorums and 20% faults [1, p. 18]. The original whitepaper’s 20% overlap claim was incorrect [3, p. 5; 4].
-
 #### Liveness (Forward Progress)
 The FLP impossibility result prevents guaranteed liveness in asynchronous networks [1, p. 18]. Under weak asynchrony (bounded delays, no faults), censorship resilience is ensured [1, p. 5]. Theorem 11 states that in a network with a single UNL and leaf validators, the XRP Ledger cannot get stuck [1, p. 20]. However, Example 9 shows that with 99% UNL overlap, the network can stall if nodes validate conflicting branches [1, p. 19].
 
