@@ -1,6 +1,6 @@
 # XDC Network Gasless Subnet Overview
 
-This is a generated response to the Whitepaper presented [https://github.com/DersonProductions/Crypto-Things/blob/main/XDC/whitepaper-xdc-gasless-subnet.pdf](https://github.com/DersonProductions/Crypto-Things/blob/main/XDC/whitepaper-xdc-gasless-subnet.pdf) on XDC Gasless Subnets.
+NOTE: This is a generated response to the Whitepaper presented [https://github.com/DersonProductions/Crypto-Things/blob/main/XDC/whitepaper-xdc-gasless-subnet.pdf](https://github.com/DersonProductions/Crypto-Things/blob/main/XDC/whitepaper-xdc-gasless-subnet.pdf) on XDC Gasless Subnets.
 
 ## What is the XDC Gasless Subnet?
 The XDC gasless subnet is a sovereign, permissioned blockchain network that operates as a Layer-2 solution within the XDC Network ecosystem. It replicates the features of the XDC mainnet, such as its Delegated Proof of Stake (DPoS) consensus mechanism (XDPoS 2.0), while allowing customization for specific enterprise or application needs. The "gasless" feature enables transactions without requiring users to pay gas fees in XDC tokens, as fees can be subsidized by the subnet operator or covered through alternative mechanisms, making it user-friendly for enterprise and consumer applications.[](https://www.xinfin.io/xdc-subnet)
