@@ -99,7 +99,7 @@ The FLP impossibility result prevents guaranteed liveness in asynchronous networ
 
 ## 4. Differences and Similarities
 
-### Mermaid Diagram: System Architecture
+### Diagram: System Architecture
 ```mermaid
 graph TD
     A[Ripple Payment System] -->|Processes Transactions| B(XRP Ledger)
@@ -117,7 +117,7 @@ graph TD
     end
 ```
 
-### Mermaid Diagram: Differences and Similarities
+### Diagram: Differences and Similarities
 ```mermaid
 classDiagram
     class Ripple {
