@@ -160,8 +160,8 @@ classDiagram
 Ripple is a payment system leveraging XRP and the XRP Ledger for fast, global transactions. XRP serves as a trustless currency and fee mechanism, while the XRP Ledger, a blockchain-like structure, ensures consistency via XRP LCP. High UNL overlap (>90%) is critical for safety, though centralization and liveness challenges persist.
 
 ## References
-1. Chase, B., & MacBrough, E. (2018). Analysis of the XRP Ledger Consensus Protocol. arXiv:1802.07242 [1].
-2. Armknecht, F., et al. (2015). Ripple: Overview and Outlook. TRUST 2015 [2].
-3. Schwartz, D., Youngs, N., & Britto, A. (2014). The Ripple Protocol Consensus Algorithm [3].
-4. XRPL.org. (2015). Correction to Ripple White Paper [4].
-5. Buterin, V. (2013). Bitcoin Network Shaken by Blockchain Fork [5].
+1. Chase, B., & MacBrough, E. (2018). Analysis of the XRP Ledger Consensus Protocol. arXiv:1802.07242 [1]. [https://github.com/DersonProductions/Crypto-Things/blob/main/XRP/Analysis%20of%20the%20XRP%20Ledger%20Consensus%20Protocol%201802.07242v1.pdf](https://github.com/DersonProductions/Crypto-Things/blob/main/XRP/Analysis%20of%20the%20XRP%20Ledger%20Consensus%20Protocol%201802.07242v1.pdf)
+2. Armknecht, F., et al. (2015). Ripple: Overview and Outlook. TRUST 2015 [2]. [https://github.com/DersonProductions/Crypto-Things/blob/main/XRP/ripple_overview_whitepaper.pdf](https://github.com/DersonProductions/Crypto-Things/blob/main/XRP/ripple_overview_whitepaper.pdf)
+3. Schwartz, D., Youngs, N., & Britto, A. (2014). The Ripple Protocol Consensus Algorithm [3]. [https://github.com/DersonProductions/Crypto-Things/blob/main/XRP/ripple_consensus_whitepaper.pdf](https://github.com/DersonProductions/Crypto-Things/blob/main/XRP/ripple_consensus_whitepaper.pdf)
+4. XRPL.org. (2015). Correction to Ripple White Paper [4]. [https://xrpl.org/blog/2015/correction-to-ripple-white-paper](https://xrpl.org/blog/2015/correction-to-ripple-white-paper)
+5. Buterin, V. (2013). Bitcoin Network Shaken by Blockchain Fork [5]. [https://bitcoinmagazine.com/technical/bitcoin-network-shaken-by-blockchain-fork-1363144448](https://bitcoinmagazine.com/technical/bitcoin-network-shaken-by-blockchain-fork-1363144448)
