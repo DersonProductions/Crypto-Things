@@ -4,14 +4,14 @@
 The XDC gasless subnet is a sovereign, permissioned blockchain network that operates as a Layer-2 solution within the XDC Network ecosystem. It replicates the features of the XDC mainnet, such as its Delegated Proof of Stake (DPoS) consensus mechanism (XDPoS 2.0), while allowing customization for specific enterprise or application needs. The "gasless" feature enables transactions without requiring users to pay gas fees in XDC tokens, as fees can be subsidized by the subnet operator or covered through alternative mechanisms, making it user-friendly for enterprise and consumer applications.[](https://www.xinfin.io/xdc-subnet)
 
 ## Benefits
-1. **Cost Efficiency**: Eliminates gas fees for end-users, reducing transaction costs and making it attractive for high-frequency or micro-transaction use cases.[](https://www.xdc.dev/gaslimit/how-do-i-get-an-rpc-url-for-my-subnet-3pc5)
-2. **Privacy**: Subnets can be configured as private networks, ensuring data and transactions are accessible only to authorized parties, ideal for sensitive business applications.[](https://test.xinfin.org/xdc-subnet)
-3. **Scalability**: Supports high-throughput, low-latency transactions, with the capacity for up to 2000 transactions per second, suitable for enterprise-grade applications.[](https://xinfin.org/)
-4. **Interoperability**: Enables cross-chain transactions and integration with legacy systems via bridges (e.g., Corda, Wanchain) and ISO 20022 compliance.[](https://xinfin.org/)
-5. **Security Inheritance**: Subnets checkpoint critical consensus data to the XDC mainnet, enhancing security by requiring an attacker to compromise both the subnet and the mainnet.[](https://www.xinfin.io/xdc-subnet)
-6. **Customizability**: Allows tailored configurations (e.g., consensus rules, access controls) to meet specific business or application requirements.[](https://www.xinfin.org/xdc-subnet)
-7. **Sovereignty**: Subnets are independently owned and operated, giving organizations full control over their infrastructure and data.[](https://www.xinfin.io/xdc-subnet)
-8. **Enterprise-Friendly**: Supports tokenization of real-world assets (RWAs) and non-tangible assets, facilitating use cases like trade finance, decentralized finance (DeFi), and digital contracts.[](https://coinmarketcap.com/currencies/xdc-network/)
+1. **Cost Efficiency**: Eliminates gas fees for end-users, reducing transaction costs and making it attractive for high-frequency or micro-transaction use cases.[https://www.xdc.dev/gaslimit/how-do-i-get-an-rpc-url-for-my-subnet-3pc5](https://www.xdc.dev/gaslimit/how-do-i-get-an-rpc-url-for-my-subnet-3pc5)
+2. **Privacy**: Subnets can be configured as private networks, ensuring data and transactions are accessible only to authorized parties, ideal for sensitive business applications.[https://test.xinfin.org/xdc-subnet](https://test.xinfin.org/xdc-subnet)
+3. **Scalability**: Supports high-throughput, low-latency transactions, with the capacity for up to 2000 transactions per second, suitable for enterprise-grade applications.[https://xinfin.org/](https://xinfin.org/)
+4. **Interoperability**: Enables cross-chain transactions and integration with legacy systems via bridges (e.g., Corda, Wanchain) and ISO 20022 compliance.[https://xinfin.org/](https://xinfin.org/)
+5. **Security Inheritance**: Subnets checkpoint critical consensus data to the XDC mainnet, enhancing security by requiring an attacker to compromise both the subnet and the mainnet.[https://www.xinfin.io/xdc-subnet](https://www.xinfin.io/xdc-subnet)
+6. **Customizability**: Allows tailored configurations (e.g., consensus rules, access controls) to meet specific business or application requirements.[https://www.xinfin.org/xdc-subnet](https://www.xinfin.org/xdc-subnet)
+7. **Sovereignty**: Subnets are independently owned and operated, giving organizations full control over their infrastructure and data.[https://www.xinfin.io/xdc-subnet](https://www.xinfin.io/xdc-subnet)
+8. **Enterprise-Friendly**: Supports tokenization of real-world assets (RWAs) and non-tangible assets, facilitating use cases like trade finance, decentralized finance (DeFi), and digital contracts.[https://coinmarketcap.com/currencies/xdc-network/](https://coinmarketcap.com/currencies/xdc-network/)
 
 ## Dependencies
 1. **XDC Mainnet**: Subnets rely on the XDC mainnet for checkpointing consensus data to enhance security, requiring a stable and operational mainnet.[](https://www.xinfin.io/xdc-subnet)
