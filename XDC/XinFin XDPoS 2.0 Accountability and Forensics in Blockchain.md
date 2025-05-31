@@ -17,11 +17,11 @@ The whitepaper situates XDPoS 2.0 as part of the "Blockchain 4.0" era, building 
 
 The security of blockchains is defined by their ability to tolerate Byzantine faults. For instance, Bitcoin’s PoW requires over 50% honest hash power, while PoS systems like Algorand and HotStuff tolerate up to one-third malicious participants. Mathematically, the security threshold is expressed as:
 
-\[
+$$
 \text{Security guaranteed if } \frac{\text{Honest participants}}{\text{Total participants}} > x
-\]
+$$
 
-Where \( x = 0.5 \) for PoW (Bitcoin) and \( x = \frac{1}{3} \) for PoS (Algorand, HotStuff).
+Where $\( x = 0.5 \)$ for PoW (Bitcoin) and $\( x = \frac{1}{3} \)$ for PoS (Algorand, HotStuff).
 
 ## XDPoS 2.0 Overview
 
@@ -43,7 +43,7 @@ The election process occurs at the start of each **epoch** (a period of 900 bloc
 
 Initially, XDPoS 2.0 uses the ranking method for compatibility, with plans to adopt VRFs for fairness. Non-elected nodes passively monitor the blockchain.
 
-**Mermaid Diagram: Master Node Election Process**
+**Diagram: Master Node Election Process**
 
 ```mermaid
 graph TD
@@ -64,11 +64,11 @@ The HotStuff protocol is a BFT state machine replication (SMR) protocol that ens
 #### Protocol Mechanics
 
 - **Committee**: The 108 master nodes form the BFT committee, ordered by account address.
-- **Rounds**: Each round has a leader (chosen round-robin) who proposes a block. The block includes a **Quorum Certificate (QC)** for the parent block, requiring votes from at least \( t_H = \lceil \text{VALIDATOR_SET_SIZE} \times \frac{2}{3} \rceil = \lceil 108 \times \frac{2}{3} \rceil = 72 \) nodes.
+- **Rounds**: Each round has a leader (chosen round-robin) who proposes a block. The block includes a **Quorum Certificate (QC)** for the parent block, requiring votes from at least $\( t_H = \lceil \text{VALIDATOR_SET_SIZE} \times \frac{2}{3} \rceil = \lceil 108 \times \frac{2}{3} \rceil = 72 \)$ nodes.
 - **Data Structures**:
   - **Block**: Contains a `parentQC` field in the header, linking to the parent block’s QC.
-  - **QC**: Includes the round number, block hash, and signatures from \( t_H \) voters.
-  - **Timeout Certificate (TC)**: Formed if \( t_H \) nodes report a timeout, skipping a round.
+  - **QC**: Includes the round number, block hash, and signatures from $\( t_H \)$ voters.
+  - **Timeout Certificate (TC)**: Formed if $\( t_H \)$ nodes report a timeout, skipping a round.
 - **Rules**:
   - **Leader Proposal**: The leader proposes a block with the latest QC.
   - **Locking Rule**: Nodes lock on the grandparent block’s QC, ignoring non-descendant blocks.
@@ -76,7 +76,7 @@ The HotStuff protocol is a BFT state machine replication (SMR) protocol that ens
   - **Finalization Rule**: A 3-chain (three consecutive blocks with QCs) finalizes the first block and its ancestors.
   - **Timeout Handling**: Nodes send timeout messages if no proposal is received, forming a TC to advance rounds.
 
-**Mermaid Diagram: HotStuff Protocol Flow**
+**Diagram: HotStuff Protocol Flow**
 
 ```mermaid
 sequenceDiagram
@@ -118,9 +118,9 @@ XDPoS 2.0 introduces a judiciary-like system through forensic monitoring, enabli
 
 If over one-third of master nodes are Byzantine, they can create forks. However, these actions require signed messages, which are embedded in the blockchain. The forensic system identifies culpable nodes via **quorum intersections**:
 
-\[
+$$
 \text{Intersection size} = \text{VALIDATOR_SET_SIZE} / 3 \approx 108 / 3 = 36
-\]
+$$
 
 At least 36 Byzantine nodes can be identified, with proof from two honest nodes holding conflicting blockchains. Penalties (e.g., slashing deposits) are enforced via a governance-driven smart contract.
 
@@ -136,7 +136,7 @@ The forensic module includes:
 - **Detector**: Monitors nodes and reports violations to the penalty mechanism.
 - **Penalty Mechanism**: Enforces hard (slashing) or soft (exclusion, higher deposits) penalties.
 
-**Mermaid Diagram: Forensic Monitoring Structure**
+**Diagram: Forensic Monitoring Structure**
 
 ```mermaid
 graph TD
@@ -145,7 +145,8 @@ graph TD
     C -->|Hard Penalty| D[Slashing Smart Contract]
     C -->|Soft Penalty| E[Exclusion/Higher Deposits]
     B -->|RPC Requests| A
-    Note over B: Displays on Dashboard
+    B --> F[Dashboard]
+    F -->|Displays Forensic Data| B
 ```
 
 ## Seamless Upgrade Plan
@@ -171,3 +172,8 @@ This makes the XDC Network ideal for disintermediating trade finance, providing 
 ## Conclusion
 
 XDPoS 2.0 represents a significant evolution in blockchain technology, introducing a judiciary-like forensic system to ensure accountability. By integrating the HotStuff protocol with advanced monitoring, it achieves military-grade security, high performance, and enterprise readiness. As Blockchain 4.0, it sets a new standard for decentralized trust systems, particularly for trade finance, fostering widespread adoption.
+
+## Links
+
+[https://xinfin.org/xdpos](https://xinfin.org/xdpos)
+[]()
