@@ -1,7 +1,3 @@
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
 # Ripple, XRP, and XRP Ledger: Overview and Interactions
 
 This document provides a detailed analysis of **Ripple**, **XRP**, and the **XRP Ledger**, clarifying their roles, interactions, and relationship with the XRP Ledger’s blockchain-like structure. It is based on primary sources [1, 2, 3] and referenced links [4, 5]. Mermaid diagrams illustrate the differences and similarities, while LaTeX explains the mathematical conditions for the XRP Ledger Consensus Protocol (XRP LCP).
