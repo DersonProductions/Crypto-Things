@@ -75,21 +75,21 @@ The XRP LCP’s safety (fork prevention) and liveness (forward progress) depend 
 #### Safety (Fork Prevention)
 To prevent forks (two honest nodes validating conflicting ledgers), the UNL overlap must satisfy specific conditions. Assuming Byzantine accountability (nodes cannot send conflicting messages undetected), Proposition 1 states [1, p. 11]:
 
-$$\[
+$$
 \left|\mathrm{UNL}_i \cap \mathrm{UNL}_j\right| > n_i - q_i + n_j - q_j
-\]$$
+$$
 
 Where:
-- \(\mathrm{UNL}_i\): Node \(\mathcal{P}_i\)’s Unique Node List.
-- \(n_i = \left|\mathrm{UNL}_i\right|\): Size of \(\mathrm{UNL}_i\).
-- \(q_i = \lceil 0.8 n_i \rceil\): Quorum (80% of UNL).
-- \(n_i - q_i\): Maximum Byzantine faults in \(\mathrm{UNL}_i\).
+- $\`\(\mathrm{UNL}_i\): Node \(\mathcal{P}_i\)’s Unique Node List.\`$
+- $\`\(n_i = \left|\mathrm{UNL}_i\right|\): Size of \(\mathrm{UNL}_i\).\`$
+- $\`\(q_i = \lceil 0.8 n_i \rceil\): Quorum (80% of UNL).\`$
+- $\`\(n_i - q_i\): Maximum Byzantine faults in \(\mathrm{UNL}_i\).\`$
 
 With 80% quorums, this requires >41% overlap of the average UNL size [1, p. 12]. Without Byzantine accountability, Proposition 4 requires [1, p. 14]:
 
-\[
+$$
 \left|\mathrm{UNL}_i \cap \mathrm{UNL}_j\right| > (n_i - q_i) + (n_j - q_j) + t_{i,j}
-\]
+$$
 
 Where \(t_{i,j} = \min(t_i, t_j, \left|\mathrm{UNL}_i \cap \mathrm{UNL}_j\right|)\), and \(t_i \leq n_i - q_i\). This yields ~61% overlap [1, p. 14]. For full safety (no conflicting ledgers at any sequence number), Theorem 8 requires [1, p. 18]:
 
