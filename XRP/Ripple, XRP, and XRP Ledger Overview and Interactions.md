@@ -85,11 +85,11 @@ Where:
 
 With 80% quorums, this requires >41% overlap of the average UNL size [1, p. 12]. Without Byzantine accountability, Proposition 4 requires [1, p. 14]:
 
-$$ \left|\mathrm{UNL}_i \cap \mathrm{UNL}_j\right| > (n_i - q_i) + (n_j - q_j) + t_{i,j} $$
+$$ |UNL_i ∩ UNL_j| > (n_i - q_i) + (n_j - q_j) + t_{i,j} $$
 
 Where $t_{i,j} = \min(t_i, t_j, \left|\mathrm{UNL}_i \cap \mathrm{UNL}_j\right|)$, and $t_i \leq n_i - q_i$. This yields ~61% overlap [1, p. 14]. For full safety (no conflicting ledgers at any sequence number), Theorem 8 requires [1, p. 18]:
 
-$$ \left|\mathrm{UNL}_i \cap \mathrm{UNL}_j\right| > \frac{n_j}{2} + n_i - q_i + t_{i,j} $$
+$$ |UNL_i ∩ UNL_j| > (\frac{n_j}{2}) + (n_i - q_i) + t_{i,j} $$
 
 This demands ~90% overlap with 80% quorums and 20% faults [1, p. 18]. The original whitepaper’s 20% overlap claim was incorrect [3, p. 5; 4].
 #### Liveness (Forward Progress)
