@@ -2,7 +2,7 @@
 
 Link to Whitepaper: [https://github.com/DersonProductions/Crypto-Things/blob/main/XDC/whitepaper-tech.pdf](https://github.com/DersonProductions/Crypto-Things/blob/main/XDC/whitepaper-tech.pdf)
 
-This is a generated summary
+NOTE: This is a generated summary
 
 The XDC Protocol, developed by XinFin Organization, is a hybrid blockchain designed to address the limitations of public and private blockchains for enterprise applications, particularly in global trade and finance. Published in September 2017, the whitepaper outlines the architecture, components, and use cases of the XDC blockchain, which combines the benefits of public and private blockchain paradigms to offer high security, auditability, and interoperability.
 
