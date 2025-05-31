@@ -3,6 +3,50 @@
 ## What is the XDC Gasless Subnet?
 The XDC gasless subnet is a sovereign, permissioned blockchain network that operates as a Layer-2 solution within the XDC Network ecosystem. It replicates the features of the XDC mainnet, such as its Delegated Proof of Stake (DPoS) consensus mechanism (XDPoS 2.0), while allowing customization for specific enterprise or application needs. The "gasless" feature enables transactions without requiring users to pay gas fees in XDC tokens, as fees can be subsidized by the subnet operator or covered through alternative mechanisms, making it user-friendly for enterprise and consumer applications.[](https://www.xinfin.io/xdc-subnet)
 
+## XDC Network Architecture
+The following diagram illustrates the XDC Network’s structure, showing how Master Nodes interact with various blockchain networks (Network 1 and Network 2), each containing public and private chains. This architecture underpins the gasless subnet’s ability to inherit security from the XDC mainnet while operating independently.
+
+```mermaid
+graph TD
+    subgraph " "
+        MN[Master Nodes<br>Blockchain<br>Public<br>Private]
+    end
+
+    subgraph Network1_1[Network 1]
+        N1_1_BC[Blockchain] --> N1_1_Pub[Public]
+        N1_1_BC --> N1_1_Priv[Private]
+    end
+
+    subgraph Network1_2[Network 1]
+        N1_2_BC[Blockchain] --> N1_2_Pub[Public]
+        N1_2_BC --> N1_2_Priv[Private]
+    end
+
+    subgraph Network1_3[Network 1]
+        N1_3_BC[Blockchain] --> N1_3_Pub[Public]
+        N1_3_BC --> N1_3_Priv[Private]
+    end
+
+    subgraph Network2_1[Network 2]
+        N2_1_BC[Blockchain] --> N2_1_Pub[Public]
+        N2_1_BC --> N2_1_Priv1[Private]
+        N2_1_BC --> N2_1_Priv2[Private]
+    end
+
+    subgraph Network2_2[Network 2]
+        N2_2_BC[Blockchain] --> N2_2_Pub[Public]
+        N2_2_BC --> N2_2_Priv1[Private]
+        N2_2_BC --> N2_2_Priv2[Private]
+    end
+
+    MN -->|...| Network1_1
+    MN -->|...| Network1_2
+    MN -->|...| Network1_3
+    MN -->|...| Network2_1
+    MN -->|...| Network2_2
+```
+*Figure 1: The XDC Network*
+
 ## Benefits
 1. **Cost Efficiency**: Eliminates gas fees for end-users, reducing transaction costs and making it attractive for high-frequency or micro-transaction use cases.[https://www.xdc.dev/gaslimit/how-do-i-get-an-rpc-url-for-my-subnet-3pc5](https://www.xdc.dev/gaslimit/how-do-i-get-an-rpc-url-for-my-subnet-3pc5)
 2. **Privacy**: Subnets can be configured as private networks, ensuring data and transactions are accessible only to authorized parties, ideal for sensitive business applications.[https://test.xinfin.org/xdc-subnet](https://test.xinfin.org/xdc-subnet)
