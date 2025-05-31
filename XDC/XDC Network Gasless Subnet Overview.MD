@@ -1,4 +1,4 @@
-# XDC Network Gasless Subnet Overview
+    # XDC Network Gasless Subnet Overview
 
 This is a generated response to the Whitepaper presented [here](https://xinfin.org/docs/whitepaper-xdc-gasless-subnet.pdf) on XDC Gasless Subnets.
 
@@ -63,8 +63,8 @@ graph TD
 
     subgraph XDC_Network
         subgraph Mainnet
-            Mainnet_Nodes[Mainnet Nodes Validators: XDPoS 2.0]
-            Mainnet_SC[Smart Contract (Checkpoint Verification)]
+            Mainnet_Nodes[Mainnet Nodes<br>Validators: XDPoS 2.0]
+            Mainnet_SC[Smart Contract<br>Checkpoint Verification]
         end
 
         subgraph Subnet
