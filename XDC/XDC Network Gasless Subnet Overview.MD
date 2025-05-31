@@ -49,6 +49,42 @@ graph TD
 ```
 *Figure 1: The XDC Network*
 
+##Clients and dApps in the XDC Ecosystem
+Clients (end-users or entities) interact with the XDC Network through decentralized applications (dApps), which can be deployed on either the mainnet or a subnet. The mainnet provides a public, secure backbone, while subnets offer customized environments (e.g., gasless transactions, privacy). The diagram below shows how clients, dApps, subnets, and the mainnet interact, including the checkpointing process that ensures subnet security.
+
+```mermaid
+graph TD
+    Clients[Clients]
+
+    subgraph dApps
+        dApp_Mainnet[dApp on Mainnet]
+        dApp_Subnet[dApp on Subnet]
+    end
+
+    subgraph XDC_Network
+        subgraph Mainnet
+            Mainnet_Nodes[Mainnet Nodes<br>Validators: XDPoS 2.0]
+            Mainnet_SC[Smart Contract<br>(Checkpoint Verification)]
+        end
+
+        subgraph Subnet
+            Subnet_Nodes[Subnet Nodes<br>Gasless Transactions]
+        end
+
+        Relayer[Relayer]
+    end
+
+    Clients -->|Interact| dApp_Mainnet
+    Clients -->|Interact| dApp_Subnet
+    dApp_Mainnet -->|Execute| Mainnet_Nodes
+    dApp_Subnet -->|Execute| Subnet_Nodes
+    Subnet_Nodes -->|Checkpoint| Relayer
+    Relayer -->|Verify| Mainnet_SC
+    Mainnet_SC -->|Secure| Mainnet_Nodes
+```
+
+*Figure 2: Clients and dApps Interaction with Subnets and Mainnet*
+
 ## Benefits
 1. **Cost Efficiency**: Eliminates gas fees for end-users, reducing transaction costs and making it attractive for high-frequency or micro-transaction use cases.[https://www.xdc.dev/gaslimit/how-do-i-get-an-rpc-url-for-my-subnet-3pc5](https://www.xdc.dev/gaslimit/how-do-i-get-an-rpc-url-for-my-subnet-3pc5)
 2. **Privacy**: Subnets can be configured as private networks, ensuring data and transactions are accessible only to authorized parties, ideal for sensitive business applications.[https://test.xinfin.org/xdc-subnet](https://test.xinfin.org/xdc-subnet)
