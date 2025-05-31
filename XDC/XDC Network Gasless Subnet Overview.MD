@@ -63,8 +63,8 @@ graph TD
 
     subgraph XDC_Network
         subgraph Mainnet
-            Mainnet_Nodes[Mainnet Nodes<br>Validators: XDPoS 2.0]
-            Mainnet_SC[Smart Contract<br>(Checkpoint Verification)]
+            Mainnet_Nodes[Mainnet Nodes Validators: XDPoS 2.0]
+            Mainnet_SC[Smart Contract (Checkpoint Verification)]
         end
 
         subgraph Subnet
