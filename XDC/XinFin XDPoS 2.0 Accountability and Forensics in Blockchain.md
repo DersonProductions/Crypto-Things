@@ -176,4 +176,4 @@ XDPoS 2.0 represents a significant evolution in blockchain technology, introduci
 ## Links
 
 [https://xinfin.org/xdpos](https://xinfin.org/xdpos)
-[]()
+[https://github.com/DersonProductions/Crypto-Things/blob/main/XDC/XDPoS%202.0%202108.01420v3.pdf](https://github.com/DersonProductions/Crypto-Things/blob/main/XDC/XDPoS%202.0%202108.01420v3.pdf)
