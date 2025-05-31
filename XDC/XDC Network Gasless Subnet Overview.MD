@@ -97,7 +97,7 @@ graph TD
 
 ## Dependencies
 1. **XDC Mainnet**: Subnets rely on the XDC mainnet for checkpointing consensus data to enhance security, requiring a stable and operational mainnet.[https://www.xinfin.io/xdc-subnet](https://www.xinfin.io/xdc-subnet)
-2. **Infrastructure**: Operators need to set up and maintain nodes (e.g., validator or masternodes) for the subnet, which may require hardware or cloud resources.[https://xinfin.org/resources.php](https://xinfin.org/resources.php)
+2. **Infrastructure**: Operators need to set up and maintain nodes (e.g., validator or masternodes) for the subnet, which may require hardware or cloud resources.[https://web.archive.org/web/20200511161325/https://xinfin.org/resources.php](https://web.archive.org/web/20200511161325/https://xinfin.org/resources.php)
 3. **Technical Expertise**: Configuring and managing a subnet requires knowledge of blockchain technology, Docker, and network setup (e.g., RPC endpoints, APIs).[https://www.xdc.dev/gaslimit/how-do-i-get-an-rpc-url-for-my-subnet-3pc5](https://www.xdc.dev/gaslimit/how-do-i-get-an-rpc-url-for-my-subnet-3pc5)
 4. **XDC Ecosystem Tools**: Utilizes tools like XDC Remix, XDCScan, and XDCPay for development, monitoring, and wallet integration.[https://xinfin.org/xdc-chain-network-tools-and-documents](https://xinfin.org/xdc-chain-network-tools-and-documents)
 5. **Community Support**: Relies on the XDC developer community for tools, documentation, and troubleshooting (e.g., XDC Forum, Telegram).[https://test.xinfin.org/xdc-subnet](https://test.xinfin.org/xdc-subnet)
@@ -118,7 +118,7 @@ graph TD
    - Determine subnet requirements (privacy, transaction volume, access control).
    - Assess hardware/cloud needs for hosting subnet nodes.
 2. **Setup Infrastructure**:
-   - Install Docker and required dependencies on hosting machines.[https://xinfin.org/resources.php](https://xinfin.org/resources.php)
+   - Install Docker and required dependencies on hosting machines.[https://web.archive.org/web/20200511161325/https://xinfin.org/resources.php](https://web.archive.org/web/20200511161325/https://xinfin.org/resources.php)
    - Deploy subnet nodes using XDC Network’s node setup scripts (available on GitHub: https://github.com/XinFinOrg/XinFin-Node).[https://xinfin.org/xdc-chain-network-tools-and-documents](https://xinfin.org/xdc-chain-network-tools-and-documents)
    - Configure subnet parameters (e.g., consensus rules, gasless transaction settings).
 3. **Integration with XDC Mainnet**:
@@ -129,11 +129,11 @@ graph TD
    - Integrate with XDC APIs for wallet support (e.g., XDCPay) and transaction monitoring (e.g., XDCScan).[https://xinfin.org/xdc-chain-network-tools-and-documents](https://xinfin.org/xdc-chain-network-tools-and-documents)
    - Enable gasless transactions by configuring the subnet to subsidize fees (e.g., via a master account).[https://www.xdc.dev/gaslimit/how-do-i-get-an-rpc-url-for-my-subnet-3pc5](https://www.xdc.dev/gaslimit/how-do-i-get-an-rpc-url-for-my-subnet-3pc5)
 5. **Testing**:
-   - Test the subnet on the Apothem TestNet to ensure functionality and performance.[https://xinfin.org/resources.php](https://xinfin.org/resources.php)
+   - Test the subnet on the Apothem TestNet to ensure functionality and performance.[https://web.archive.org/web/20200511161325/https://xinfin.org/resources.php](https://web.archive.org/web/20200511161325/https://xinfin.org/resources.php)
    - Validate gasless transactions using tools like web3.js or ethers.js.[https://www.xdc.dev/gaslimit/how-do-i-get-an-rpc-url-for-my-subnet-3pc5](https://www.xdc.dev/gaslimit/how-do-i-get-an-rpc-url-for-my-subnet-3pc5)
 6. **Deployment**:
    - Launch the subnet on the XDC mainnet.
-   - Monitor node uptime, gas limits, and transaction activity using XinFin Explorer or custom tools.[https://xinfin.org/resources.php](https://xinfin.org/resources.php)
+   - Monitor node uptime, gas limits, and transaction activity using XinFin Explorer or custom tools.[https://web.archive.org/web/20200511161325/https://xinfin.org/resources.php](https://web.archive.org/web/20200511161325/https://xinfin.org/resources.php)
 7. **Maintenance**:
    - Regularly update subnet software to align with XDC Network upgrades (e.g., XDC 2.0).[https://coinmarketcap.com/currencies/xdc-network/](https://coinmarketcap.com/currencies/xdc-network/)
    - Engage with the XDC community for support via the XDC Forum or Telegram.[https://test.xinfin.org/xdc-subnet](https://test.xinfin.org/xdc-subnet)
