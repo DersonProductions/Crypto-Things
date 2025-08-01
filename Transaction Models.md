@@ -20,7 +20,7 @@ graph TD
     C["UTXO2: 5 BTC<br>(from previous tx)"] -->|Input| B
     B -->|Output| D["New UTXO: 12 BTC<br>(to recipient)"]
     B -->|Output| E["Change UTXO: 3 BTC<br>(back to sender)"]
-    style B fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#e00,stroke:#333,stroke-width:2px
 ```
 
 ### Account-Based Model
@@ -45,7 +45,7 @@ graph TD
     A[Sender Account<br>Balance: 15 ETH<br>Nonce: 5] -->|Transaction: Send 10 ETH| B[Blockchain State Update]
     B -->|Debit| AUpdated[Sender Account<br>Balance: 5 ETH<br>Nonce: 6]
     B -->|Credit| C["Recipient Account<br>Balance: 10 ETH (increased)"]
-    style B fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#e00,stroke:#333,stroke-width:2px
 ```
 
 ### Extended UTXO (eUTXO) Model
@@ -69,7 +69,7 @@ graph TD
     C[UTXO2: 5 ADA] -->|Input| B
     B -->|Validate Script| D[New UTXO: 12 ADA<br>with New Datum]
     B -->|Output| E[Change UTXO: 3 ADA]
-    style B fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#e00,stroke:#333,stroke-width:2px
 ```
 
 ### Differences between Models
