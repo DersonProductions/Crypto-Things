@@ -282,10 +282,6 @@ XDC's hybrid design (Ethereum-inspired with Quorum elements) targets enterprise 
 On a side note, 
 
 Bitcoin uses a **Merkle Tree** for organizing and verifying transactions within each block, but it does not employ a complex global state trie like MPT for the entire ledger state. Instead, the Unspent Transaction Output (UTXO) set—the core of Bitcoin's state—is managed through a simple key-value database (typically LevelDB in Bitcoin Core implementations). This reflects Bitcoin's UTXO model, where the "state" is implicitly the sum of all unspent outputs rather than explicit account balances. There is no single Merkle root committing to the full UTXO set in the protocol (though proposals like Utreexo use accumulators for compact proofs). The Merkle Tree focuses on per-block transaction integrity.
-<argument name="citation_id">0</argument>
-
-<argument name="citation_id">7</argument>
-
 
 ### Key Components
 - **Merkle Tree**:
