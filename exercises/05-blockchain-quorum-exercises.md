@@ -15,9 +15,11 @@ This file provides starter guides, hints, and sample solutions for the exercises
 ## Beginner: Setup Verification
 
 ### Exercise Prompt
+
 Clone the quorum-examples repository and start the network; confirm 7 containers are running.
 
 ### Starter Commands
+
 Open a terminal and run:
 
 ```
@@ -33,11 +35,13 @@ QUORUM_CONSENSUS=raft docker-compose up -d
 ```
 
 ### Hints
+
 - After `docker-compose up -d`, wait 30-60 seconds for initialization.
 - The network includes nodes (e.g., quorum-node1) and Tessera privacy managers.
 - Expected: 7 Quorum nodes + Tessera instances (total ~14 containers, but focus on the 7 core nodes).
 
 ### Sample Solution
+
 Verify with:
 
 ```
@@ -49,9 +53,11 @@ If you see entries like `quorum-examples_quorum-node1_1`, etc., it's running. St
 ## Intermediate: Node Interaction
 
 ### Exercise Prompt
+
 Attach to a node and list connected peers using the geth console.
 
 ### Starter Commands
+
 Assuming the network is running from the beginner exercise:
 
 ```
@@ -66,11 +72,13 @@ docker exec -it quorum-examples_quorum-node1_1 geth attach /qdata/dd1/geth.ipc
 ```
 
 ### Hints
+
 - The IPC path might vary; check container logs if `/qdata/dd1/geth.ipc` doesn't work (common in examples repo).
 - In Raft, expect 6 peers (for a 7-node cluster).
 - Exit console with `exit`.
 
 ### Sample Solution
+
 In the geth console:
 
 ```
@@ -82,9 +90,11 @@ Output: An array of peer objects with enode IDs, showing connections. If empty, 
 ## Advanced: Custom Network
 
 ### Exercise Prompt
+
 Reduce the network to 4 nodes; adjust configs and restart. Verify the smaller cluster works.
 
 ### Starter Guide
+
 Build on the 7nodes example in the repo.
 
 1. Navigate: `cd quorum-examples/7nodes` (or copy to a new dir like `4nodes`).
@@ -103,6 +113,7 @@ done
 ```
 
 ### Hints
+
 - Update `static-nodes.json` in each node's qdata to include only 4 enodes.
 - Generate new keys if needed: `geth account new --datadir qdata/dd$i`.
 - For Tessera: Adjust privacy configs accordingly.
@@ -110,6 +121,7 @@ done
 - Common issue: Ensure Raft leader election succeeds (logs show "Elected as leader").
 
 ### Sample Solution
+
 1. Copy `7nodes` to `4nodes`.
 2. Edit files:
    - `static-nodes.json`: List only 4 enode entries.
@@ -125,6 +137,7 @@ done
 This customizes for smaller setups, useful for testing.
 
 ## Further Challenges
+
 - Add privacy: Deploy a private smart contract (see doc's Example 2).
 - Python integration: Extend the doc's example to query peers via web3.py (use HTTP RPC if IPC tricky).
 - Link to staking: Implement a simple validator staking sim in Python for Raft nodes (preview 12-staking-and-interest-bearing-actions.md).

@@ -20,12 +20,14 @@ Staking and interest-bearing mechanisms allow cryptocurrency holders to earn rew
 ## Basics of Staking and Interest-Bearing Mechanisms
 
 ### Staking
+
 - **Proof-of-Stake (PoS)**: Validators stake tokens to propose/attest blocks; rewards from fees/inflation, slashes for misbehavior.
 - **Types**: Native (e.g., ETH staking), Delegated (e.g., Cosmos), Liquid (e.g., Lido stETH).
 - **Actions**: Stake, unstake (with lockup), claim rewards.
 - **Risks**: Slashing (loss for downtime), impermanent loss in pools.
 
 ### Interest-Bearing
+
 - **Mechanics**: Lock assets in protocols (e.g., Aave lending); earn interest from borrowers or liquidity incentives.
 - **Compounding**: Re-invest earnings to grow principal (e.g., annual vs. continuous).
 - **Formula**: Simple: P * r * t; Compound: P * (1 + r/n)^(nt); Continuous: P * e^(rt).
@@ -38,6 +40,7 @@ In Quorum: Permissioned staking for enterprise governance.
 Use OpenZeppelin for ERC20 tokens; add staking logic.
 
 ### Step-by-Step
+
 1. **Token Contract**: ERC20 with minting.
 2. **Staking Contract**: Stake, calculate rewards (e.g., fixed APY), claim.
 3. **Explanation**: Track user stakes/timestamps; rewards = stake * rate * time.
@@ -96,6 +99,7 @@ contract Staking {
 Extend for interest: Use vaults where deposits earn from pools.
 
 ### Compounding
+
 - Manual: User claims/re-stakes.
 - Auto: Contract compounds on interactions.
 
@@ -104,6 +108,7 @@ Example: Add `compound()` to add rewards to stake.
 ## Hands-On Examples
 
 ### Example 1: JS Staking Interaction
+
 ```javascript
 const Web3 = require('web3');
 const w3 = new Web3('http://localhost:8545');
@@ -124,6 +129,7 @@ doStake(100);
 Full in `/examples/12-staking-and-interest-bearing-actions-example.js`.
 
 ### Example 2: Python Yield Calculator
+
 ```python
 import math
 
@@ -140,12 +146,15 @@ print(compound_interest(p, r, n, t))  # 1051.16
 ## Exercises
 
 ### Beginner: Calculate Interest
+
 1. Write a script for simple/compound interest.
 
 ### Intermediate: Deploy Staking
+
 2. Deploy RewardToken and Staking; stake from an account.
 
 ### Advanced: Claim and Compound
+
 3. Implement claim; add auto-compound on unstake.
 
 Starters in `/exercises/12-staking-and-interest-bearing-actions-exercises.md`.
@@ -157,6 +166,7 @@ Starters in `/exercises/12-staking-and-interest-bearing-actions-exercises.md`.
 - Integration: With banks (11) for interest on deposits; medical (10) for health data staking rewards.
 
 ## References and Further Reading
+
 - Ethereum Staking: https://ethereum.org/en/staking/
 - DeFi Yields: https://defillama.com/yields
 - OpenZeppelin Staking: https://docs.openzeppelin.com/contracts/4.x/staking

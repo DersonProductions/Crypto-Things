@@ -34,6 +34,7 @@ Challenges: Key management, gas costs for on-chain verification.
 For security, store keys off-node; sign locally and broadcast via Geth.
 
 ### Step-by-Step
+
 1. **Generate Keys**: Use ethereumjs-wallet.
 2. **Build Tx**: Use ethereumjs-tx with nonce/gas.
 3. **Sign**: With private key.
@@ -44,6 +45,7 @@ Example in Node.js (see below).
 ## Hands-On Examples
 
 ### Example 1: PRE-Enabled Record Sharing in Node.js
+
 ```javascript
 const Wallet = require('ethereumjs-wallet').default;
 const Transaction = require('ethereumjs-tx').Transaction;
@@ -82,6 +84,7 @@ const signedTx = rawTx.serialize().toString('hex');
 Full script in `/examples/10-dapps-for-digitizing-medical-records-example.js`. Python variant uses py-ecc for keys, web3 for tx.
 
 ### Example 2: Python Off-Chain Signing
+
 ```python
 from eth_account import Account
 from web3 import Web3
@@ -103,12 +106,15 @@ w3.eth.send_raw_transaction(signed_tx.rawTransaction)
 ## Exercises
 
 ### Beginner: Key Generation
+
 1. Generate wallets with ethereumjs-wallet; log public keys.
 
 ### Intermediate: Encrypt/Share
+
 2. Encrypt a mock record with npre; generate re-Enc key.
 
 ### Advanced: Off-Chain Tx
+
 3. Sign and broadcast a tx with external keys; verify on-chain.
 
 Starters in `/exercises/10-dapps-for-digitizing-medical-records-exercises.md`.
@@ -116,6 +122,7 @@ Starters in `/exercises/10-dapps-for-digitizing-medical-records-exercises.md`.
 ## Advanced Topics/Extensions
 
 ### Extending to Other Services
+
 This PRE + blockchain model is versatile beyond medical records, applicable to any sensitive public-yet-private data scenario requiring selective sharing and auditability:
 - **Tax Record Payments for Property**: Encrypt property tax docs (e.g., ownership proofs, payment history) with owner's key. Use PRE to re-encrypt for auditors/government without full access. On-chain hashes ensure immutability; smart contracts automate payment triggers (e.g., escrow release on verification). Benefits: Reduces fraud in public records, enables compliant sharing with banks for mortgages.
 - **Fiduciary Regulations (e.g., Trusts, Wills)**: For public fiduciary filings, encrypt beneficiary details. Trustees share re-encrypted views with regulators/courts. Blockchain logs access trails for compliance (e.g., GDPR/SOX). Extend with multi-sig for approvals.
@@ -124,6 +131,7 @@ This PRE + blockchain model is versatile beyond medical records, applicable to a
 See interoperability (08) for cross-system sharing.
 
 ## References and Further Reading
+
 - Proxy Re-Encryption in Blockchain: https://arxiv.org/abs/2103.12345
 - ethereumjs Libraries: https://github.com/ethereumjs
 - npre Docs: https://www.npmjs.com/package/npre

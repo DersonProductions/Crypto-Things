@@ -5,12 +5,14 @@ This guide outlines **best practices** for designing, implementing, and maintain
 Remember: Cryptography is only as strong as its implementation. Always prioritize security audits and use established libraries.
 
 ## Key Principles
+
 - **Security First**: Assume adversaries are sophisticated—design for worst-case scenarios.
 - **Minimalism**: Use the simplest solution that meets requirements to reduce attack surfaces.
 - **Layered Defense**: Combine multiple protections (e.g., encryption + access controls).
 - **Regular Updates**: Monitor for vulnerabilities and upgrade algorithms/libraries.
 
 ## 1. Key Management
+
 Poor key handling is a top cause of breaches. Treat keys like nuclear codes.
 
 - **Generate Securely**: Use cryptographically secure random number generators (CSPRNGs) like Python's `secrets` module.
@@ -19,10 +21,12 @@ Poor key handling is a top cause of breaches. Treat keys like nuclear codes.
 - **Backup with Care**: Encrypt backups and store in multiple secure locations.
 
 #### Common Pitfalls
+
 - Reusing keys across purposes (e.g., signing and encryption).
 - Exposing private keys in logs or code repos.
 
 Example: Secure Key Generation in Python
+
 ```python
 import secrets
 
@@ -32,6 +36,7 @@ print(f"Private Key (hex): {private_key}")
 ```
 
 ## 2. Algorithm Selection
+
 Choose based on needs: security, performance, and future-proofing.
 
 - **Hashing**: Prefer SHA-3 or BLAKE2 for new projects over SHA-256 (better collision resistance).
@@ -40,6 +45,7 @@ Choose based on needs: security, performance, and future-proofing.
 - **Post-Quantum Readiness**: Consider algorithms like Dilithium or Kyber as quantum computing advances.
 
 #### Selection Guide
+
 | Scenario | Recommended Algorithm | Why? |
 |----------|------------------------|------|
 | High-Throughput Ledger | BLAKE3 (Hash), EdDSA (Sign) | Fast computation. |
@@ -47,6 +53,7 @@ Choose based on needs: security, performance, and future-proofing.
 | Legacy Integration | SHA-256 + ECDSA | Compatibility with Bitcoin/Ethereum. |
 
 ## 3. Implementation Best Practices
+
 - **Use Audited Libraries**: Avoid "roll your own" crypto. Python: `cryptography` or `pycryptodome`; Rust: `ring`.
 - **Input Validation**: Sanitize all inputs to prevent injection attacks (e.g., canonicalize data before hashing).
 - **Error Handling**: Don't leak info in errors (e.g., "Invalid signature" vs. detailed reasons).
@@ -54,6 +61,7 @@ Choose based on needs: security, performance, and future-proofing.
 - **Audits**: Get third-party reviews for production code.
 
 Example: Safe Hashing with Salt (to prevent rainbow tables)
+
 ```python
 import hashlib
 import os
@@ -68,6 +76,7 @@ pw_hash = salted_hash("securepassword")
 ```
 
 ## 4. Consensus and Network Security
+
 For decentralized ledgers:
 
 - **Node Diversity**: Run nodes on varied hardware/OS to avoid systemic failures.
@@ -78,24 +87,28 @@ For decentralized ledgers:
 In PoS: Enforce slashing (penalize bad behavior by burning stakes).
 
 ## 5. Privacy and Compliance
+
 - **Minimize Data Exposure**: Use zero-knowledge proofs (ZKPs) for verifiable computations without revealing details.
 - **Anonymity Techniques**: Mixers or ring signatures (e.g., Monero's approach).
 - **Regulatory Adherence**: For financial ledgers, comply with KYC/AML; log auditable trails without compromising privacy.
 - **Data Retention**: Only store necessary data; use off-chain storage for large files.
 
 ## 6. Scalability and Performance
+
 - **Sharding**: Divide the ledger into shards for parallel processing (e.g., Ethereum 2.0).
 - **Layer 2 Solutions**: Offload transactions to sidechains or rollups (e.g., Optimism).
 - **Optimization**: Batch transactions; use efficient data structures like Patricia tries.
 - **Monitoring**: Track metrics like TPS (transactions per second) and latency.
 
 #### Scalability Comparison
+
 | Technique | Pros | Cons | Example |
 |-----------|------|------|---------|
 | Sharding | High throughput | Complex coordination | Zilliqa |
 | Layer 2 | Fast, cheap | Depends on Layer 1 security | Polygon |
 
 ## 7. Common Pitfalls to Avoid
+
 - **Weak Randomness**: Don't use `random` module—stick to `secrets`.
 - **Timing Attacks**: Use constant-time operations (e.g., in comparisons).
 - **Replay Attacks**: Include nonces/timestamps in transactions.
@@ -103,11 +116,13 @@ In PoS: Enforce slashing (penalize bad behavior by burning stakes).
 - **Ignoring Upgrades**: Deprecated algos (e.g., MD5) invite exploits.
 
 ## Real-World Lessons
+
 - From Bitcoin: Economic incentives align security (e.g., mining rewards).
 - From The DAO Hack (2016): Smart contract bugs can lead to massive losses—always audit.
 - From Recent Trends (2025): With AI-driven attacks rising, integrate ML for anomaly detection.
 
 ## Next Steps
+
 - Apply these in [/examples/secure_key_management.py](/examples/secure_key_management.py) (create if needed).
 - Tackle [/exercises/03-best-practices-challenges.md](/exercises/03-best-practices-challenges.md) for hands-on scenarios.
 - Dive into advanced topics like privacy ledgers in future docs.

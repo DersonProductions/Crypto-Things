@@ -26,11 +26,13 @@ DApps are applications where the backend logic is executed on a blockchain via s
 - **Consensus-Driven**: Changes require network agreement.
 
 ### Types of DApps
+
 - **Type I**: Run on their own blockchain (e.g., Bitcoin for payments).
 - **Type II**: Use an existing blockchain but have their own tokens (e.g., ERC-20 tokens on Ethereum).
 - **Type III**: Built on Type II protocols, adding more layers (e.g., DeFi apps on Ethereum).
 
 ### Blockchain-Based DApps Overview
+
 Most DApps today are built on platforms like Ethereum, which supports Turing-complete smart contracts. For instance:
 - **Uniswap**: A decentralized exchange (DEX) for swapping tokens without intermediaries.
 - **CryptoKitties**: A game where users breed and trade digital cats as NFTs.
@@ -53,17 +55,21 @@ graph LR
 ## Core Components of DApps
 
 ### Smart Contracts
+
 The "brain" of a DApp. Written in languages like Solidity, they define rules and logic. (See 06-smart-contracts.md for details.)
 
 ### Frontend Integration
+
 Users interact via web apps (e.g., React) connected to the blockchain. Wallets like MetaMask handle transactions.
 
 ### Backend Alternatives
+
 While traditional backends are minimal, oracles (e.g., Chainlink) fetch off-chain data.
 
 ## Hands-On Examples
 
 ### Example 1: Simple DApp Overview in Python
+
 Here's a Python script using [web3.py](https://github.com/ethereum/web3.py) to interact with an Ethereum testnet DApp (e.g., querying a smart contract). Install via `pip install web3` (assume local setup).
 
 ```python
@@ -87,6 +93,7 @@ else:
 Full example in `/examples/04-decentralized-applications-example.py`. Replace with your Infura key.
 
 ### Example 2: Conceptual DApp Simulation
+
 Simulate a basic voting DApp in Python without a real blockchain.
 
 ```python
@@ -114,12 +121,15 @@ This mimics on-chain storage; extend to use actual blockchain in advanced exerci
 ## Exercises
 
 ### Beginner: Research and Summarize
+
 1. List 3 real-world DApps and their blockchains. Explain one benefit each.
 
 ### Intermediate: Setup and Connect
+
 2. Install [web3.py](https://github.com/ethereum/web3.py?tab=readme-ov-file#installation) and modify the example to fetch the latest block number from Ethereum mainnet. Expected output: A number > 20,000,000.
 
 ### Advanced: Build a Mini-DApp
+
 3. Extend the simulation to include user authentication (e.g., via mock signatures from 01-basics.md). Prevent double-voting.
 
 Solutions starters in `/exercises/04-decentralized-applications-exercises.md`.
@@ -127,12 +137,15 @@ Solutions starters in `/exercises/04-decentralized-applications-exercises.md`.
 ## Advanced Topics/Extensions
 
 ### Scaling DApps
+
 Discuss Layer 2 solutions (e.g., Optimism) for handling more transactions. Link to 08-interoperable-blockchains.md.
 
 ### Staking in DApps
+
 Many DApps incorporate staking for governance or rewards. See 12-staking-and-interest-bearing-actions.md for details on implementing interest-bearing mechanisms.
 
 ## References and Further Reading
+
 - Ethereum DApp Developer Guide: https://ethereum.org/en/developers/docs/dapps/
 - "Mastering Ethereum" by Andreas Antonopoulos (free online chapters).
 - web3.py Docs: https://web3py.readthedocs.io/

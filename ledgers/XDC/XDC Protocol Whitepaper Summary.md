@@ -26,7 +26,7 @@ The whitepaper compares blockchain types:
 
 **Diagram: Blockchain Comparison**
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[Blockchain Types] --> B[Public]
     A --> C[Private]
@@ -38,7 +38,7 @@ graph TD
     D --> I[Open Participation, Restricted Hosting]
     D --> J[High Throughput]
     D --> K[Interoperability]
-```
+</div>
 
 ## 2. The XDC Blockchain
 
@@ -54,7 +54,7 @@ XDC supports both public and private network states. The public state is shared 
 
 **Diagram: XDC Network Architecture**
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[XDC Blockchain] --> B[Public State]
     A --> C[Private State]
@@ -64,7 +64,7 @@ graph TD
     A --> G[Interoperability]
     G --> H[Ethereum]
     G --> I[Bitcoin]
-```
+</div>
 
 ### 2.3 Consortium Membership
 
@@ -88,7 +88,7 @@ The architecture comprises several components:
 
 **Diagram: XDC Blockchain Components**
 
-```mermaid
+<div class="mermaid">
 classDiagram
     class XDC_Protocol {
         +Administration Manager
@@ -109,7 +109,7 @@ classDiagram
     Network_Manager --> Chain_Manager
     Resource_Manager --> IoT_Devices
     Augur_Service --> External_Data
-```
+</div>
 
 ### 2.5 Forking Quorum
 
@@ -125,7 +125,7 @@ The XDC network includes four node types:
 
 **Diagram: XDC Node Types**
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[XDC Network] --> B[Full Node]
     A --> C[Reference Node]
@@ -137,7 +137,7 @@ graph TD
     D --> I[Private State]
     D --> J[Access Public State]
     E --> K[Audit/Regulation]
-```
+</div>
 
 ### 2.7 Design Considerations
 
@@ -159,7 +159,7 @@ The whitepaper describes a use case involving farmers in Ghana purchasing a harv
 
 **Diagram: Use Case Flow**
 
-```mermaid
+<div class="mermaid">
 sequenceDiagram
     participant A as Farmers
     participant B as Manufacturer
@@ -178,7 +178,7 @@ sequenceDiagram
     P->>P: Escrow Contract
     P->>A: Record Value
     P->>C: Repay Loan
-```
+</div>
 
 ## 4. Blockchain Applications
 

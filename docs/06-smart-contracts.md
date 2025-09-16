@@ -31,6 +31,7 @@ In Quorum, add privacy with `privateFor` for selective visibility.
 Start with a simple storage contract.
 
 ### Example Contract: SimpleStorage
+
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
@@ -59,6 +60,7 @@ Pitfalls: Avoid infinite loops, handle overflows with SafeMath (or use ^0.8+ che
 Geth (Go Ethereum) provides a JS console for deployment.
 
 ### Step-by-Step Guide
+
 1. **Start Geth**: For a local dev chain: `geth --datadir qdata/dd1 init genesis.json; geth --dev console`.
 2. **Compile Contract**: Get ABI and bytecode from solc.
 3. **Deploy in Console**:
@@ -85,6 +87,7 @@ Script to deploy/interact (see examples folder).
 ## Hands-On Examples
 
 ### Example 1: Deploy via web3.js in Node.js
+
 ```javascript
 const Web3 = require('web3');
 const web3 = new Web3('http://localhost:8545'); // Or Quorum RPC
@@ -105,6 +108,7 @@ deploy();
 Full script in `/examples/06-smart-contracts-example.js`.
 
 ### Example 2: Interact with Deployed Contract
+
 ```javascript
 async function interact(address) {
   const contract = new web3.eth.Contract(abi, address);
@@ -117,12 +121,15 @@ async function interact(address) {
 ## Exercises
 
 ### Beginner: Compile a Contract
+
 1. Write and compile the SimpleStorage contract using solc.
 
 ### Intermediate: Deploy via Geth Console
+
 2. Deploy it on a dev chain and retrieve the address.
 
 ### Advanced: web3.js Transaction
+
 3. Broadcast a `set` transaction and query `get`.
 
 Starters in `/exercises/06-smart-contracts-exercises.md`.
@@ -134,6 +141,7 @@ Starters in `/exercises/06-smart-contracts-exercises.md`.
 - Tie to staking: Contracts for token staking (12-staking-and-interest-bearing-actions.md).
 
 ## References and Further Reading
+
 - Solidity Docs: https://docs.soliditylang.org
 - Geth JS Console for Contracts: https://geth.ethereum.org/docs/interacting-with-geth/javascript-console-contracts
 - web3.js Deployment Guide: https://docs.web3js.org/guides/smart_contracts/smart_contracts_guide/

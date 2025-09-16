@@ -16,9 +16,11 @@ This file contains starter code, hints, and sample solutions for the exercises o
 ## Beginner: Key Generation
 
 ### Exercise Prompt
+
 Generate wallets with ethereumjs-wallet; log public keys.
 
 ### Starter Code
+
 Create `key-gen.js`:
 
 ```javascript
@@ -28,11 +30,13 @@ const Wallet = require('ethereumjs-wallet').default;
 ```
 
 ### Hints
+
 - Use `Wallet.generate()` to create a wallet.
 - Get public key: `wallet.getPublicKey().toString('hex')`.
 - Expected: Two hex strings (e.g., '0x04...' for uncompressed).
 
 ### Sample Solution
+
 Complete:
 
 ```javascript
@@ -50,9 +54,11 @@ Run: Outputs two public keys. Use these in later exercises.
 ## Intermediate: Encrypt/Share
 
 ### Exercise Prompt
+
 Encrypt a mock record with npre; generate re-encryption key.
 
 ### Starter Code
+
 Build on beginner; add to `encrypt-share.js`:
 
 ```javascript
@@ -69,12 +75,14 @@ const record = Buffer.from('Mock medical record');
 ```
 
 ### Hints
+
 - Init npre: `const pre = new npre();` (may need setup if elliptic curve).
 - Encrypt: `pre.encrypt(patientPK, record)` (adapt to lib API; check npre docs).
 - Re-key: `pre.reKeyGen(patientPK, doctorPK)`.
 - Log ciphertext and re-key as hex.
 
 ### Sample Solution
+
 Assuming npre API (adjust if needed):
 
 ```javascript
@@ -93,9 +101,11 @@ Output: Hex strings for encrypted data and key. Proxy can use reEncKey to re-enc
 ## Advanced: Off-Chain Tx
 
 ### Exercise Prompt
+
 Sign and broadcast a tx with external keys; verify on-chain.
 
 ### Starter Code
+
 `off-chain-tx.js`:
 
 ```javascript
@@ -112,6 +122,7 @@ const privateKey = wallet.getPrivateKey();
 ```
 
 ### Hints
+
 - Get nonce: `await w3.eth.getTransactionCount(wallet.getAddressString())`.
 - Build tx: Use Transaction with chain params.
 - Sign: `tx.sign(privateKey)`.
@@ -119,6 +130,7 @@ const privateKey = wallet.getPrivateKey();
 - Verify: Check receipt for status.
 
 ### Sample Solution
+
 Complete (simple value tx):
 
 ```javascript
@@ -146,6 +158,7 @@ sendOffChainTx();
 Run: Sends tx; log hash. Verify with `w3.eth.getTransactionReceipt(hash)`.
 
 ## Further Challenges
+
 - Full PRE Flow: Re-encrypt ciphertext with proxy and decrypt as doctor.
 - DApp Integration: Build a simple Express server to handle uploads/sharing.
 - Extend to Other Services: Adapt for tax records—encrypt payment proofs, share re-encrypted with auditors (link to extensions in doc).

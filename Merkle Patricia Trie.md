@@ -14,6 +14,7 @@ In Ethereum's implementation (the most prominent use case), the MPT is further m
 - Values can be account balances, nonce, code hashes, or contract storage.
 
 Node Types in an MPT:
+
 - **Null/Empty Node**: Represents an absent value or end of path.
 - **Leaf Node**: Stores the remaining key suffix (if any) and the value. Structure: [encoded remaining key, value].
 - **Extension Node**: Handles shared prefixes to compress the tree. Structure: [encoded shared prefix, child node hash].
@@ -22,6 +23,7 @@ Node Types in an MPT:
 Each node's hash is computed using a cryptographic function (e.g., Keccak-256 in Ethereum), incorporating its type and contents. This ensures the tree is deterministic: identical key-value sets always produce the same root hash.
 
 ### How It Works
+
 1. **Insertion/Update**: To add or modify a key-value pair, traverse the trie based on the key's hex representation. Split or create nodes as needed (e.g., insert an extension for shared prefixes or a branch for divergences). Update hashes bottom-up to recompute the new root hash.
 2. **Lookup**: Follow the key's path from the root, decompressing extensions and branching as required, until reaching a leaf or value slot.
 3. **Deletion**: Similar to update, but set the value to null and prune unnecessary nodes (e.g., merge extensions or remove empty branches).
@@ -30,18 +32,20 @@ Each node's hash is computed using a cryptographic function (e.g., Keccak-256 in
 This process ensures operations are O(log n) in time and space, where n is the number of entries, due to the trie's depth being proportional to key length.
 
 Advantages:
+
 - **Efficiency**: Compact storage and quick verifiable queries.
 - **Security**: Immutable once hashed; tampering changes the root hash.
 - **Scalability**: Supports state sharding and stateless clients in blockchains.
 
 Disadvantages:
+
 - **Complexity**: More intricate than simple key-value stores, with potential for high gas costs in updates (e.g., in Ethereum).
 - **Overhead**: Hash computations add CPU load.
 
 ### Diagram: Simplified MPT Structure
 Here's a visual representation of an MPT storing example key-value pairs (keys as hex strings for simplicity, e.g., "a1" -> value1, "a2" -> value2, "b" -> value3). The diagram shows node types and hash propagation.
 
-```mermaid
+<div class="mermaid">
 graph TD
     Root[Root Hash] --> Extension["Extension Node<br>Prefix: 'a'<br>Hash: H(Extension)"]
     Extension --> Branch["Branch Node<br>Slots: [1: Leaf1, 2: Leaf2, ...]<br>Hash: H(Branch)"]
@@ -56,9 +60,10 @@ graph TD
         Extension -.-> Root
         Leaf3 -.-> Root
     end
-```
+</div>
 
 ### Use in Blockchains
+
 MPTs are integral to account-based blockchains like Ethereum, where they store the "world state" (account balances, contract code, and storage), transaction receipts, and transactions within blocks. The block header includes root hashes for these tries, enabling quick validation of the entire state without downloading everything—crucial for consensus and light nodes.
 
  Variants appear in other chains:
@@ -77,6 +82,7 @@ The MPT's design addresses blockchain challenges like state bloat and verificati
 The XRP Ledger does not use a Merkle Patricia Trie (MPT) for its state management. Instead, it employs a data structure called **SHAMap** (SHA-Map), which is a hashed radix tree that incorporates Merkle-like properties for cryptographic verification and efficient storage. This structure is used to represent both the state data (account balances, settings, and other ledger objects) and transaction sets in a verifiable, tamper-resistant way.
 
 ### Key Components of SHAMap
+
 - **Radix Tree Basis**: SHAMap is a radix-16 (hexary) tree, where each non-leaf node can have up to 16 children, corresponding to hexadecimal digits (0-9, a-f). Keys (e.g., 256-bit IDs for ledger entries) are broken into nibbles (4-bit chunks) to traverse the tree.
 - **Merkle Integration**: Every node is hashed using SHA-512Half (the first 256 bits of SHA-512), incorporating the hashes of its children. This creates a root hash that serves as a cryptographic summary of the entire structure, similar to a Merkle Tree. It enables efficient proofs of inclusion/exclusion and delta computations between ledger versions.
 - **Node Types**:
@@ -85,21 +91,25 @@ The XRP Ledger does not use a Merkle Patricia Trie (MPT) for its state managemen
 - **No Patricia Compression**: Unlike MPT, SHAMap does not use extension nodes to compress chains of single-child paths. This makes it a "pure" radix tree, which can lead to deeper trees for sparse data but simplifies certain operations like updates in XRPL's context.
 
 ### How It Works
+
 1. **Storage**: Ledger state is organized as a SHAMap where each leaf is a ledger entry (e.g., an account's balance or trust line). The tree is indexed by the entry's unique 256-bit key.
 2. **Updates**: When a transaction modifies state, the SHAMap is updated by traversing the key path, altering leaves, and recomputing hashes up to the root. This produces a new root hash for the updated ledger.
 3. **Verification**: The root hash (included in the ledger header as the "account hash" for state or "transaction hash" for tx sets) allows nodes to verify data integrity. Proofs can be generated by providing the path of hashes from root to leaf.
 4. **Efficiency**: Designed for XRPL's consensus (Ripple Protocol Consensus Algorithm), it supports fast diffing between ledgers (e.g., only changed subtrees need recomputation) and partial syncing for light clients.
 
 Advantages:
+
 - **Security**: Hash chaining prevents tampering; any change alters the root hash.
 - **Performance**: Optimized for XRPL's high throughput (1,500+ TPS), with efficient deltas for consensus rounds.
 - **Simplicity**: Easier to implement for XRPL's payment-focused model compared to more complex tries.
 
 Disadvantages:
+
 - **Depth**: Without compression, trees can be deeper (up to 64 levels for 256-bit keys), potentially increasing lookup times (though mitigated by caching).
 - **Storage**: Less compact than MPT for highly sparse datasets.
 
 ### Comparison to Merkle Patricia Trie
+
 SHAMap and MPT are both Merkle-ized tries for blockchain state, but differ in design:
 - **Similarity**: Both are hexary (radix-16), use path-based key traversal, and provide Merkle proofs via node hashes. They enable verifiable state snapshots without full data.
 - **Differences**:
@@ -121,7 +131,7 @@ SHAMap and MPT are both Merkle-ized tries for blockchain state, but differ in de
 ### Diagram: Simplified SHAMap Structure
 Here's a visual of a basic SHAMap storing example key-value pairs (keys as hex for simplicity, e.g., "a1" -> value1, "a2" -> value2). Note the fixed branching and hash propagation without compression.
 
-```mermaid
+<div class="mermaid">
 graph TD
     Root["Root Hash: SHA512/256(Children Hashes)"] --> InnerA["Inner Node A<br>(for prefix 'a')<br>Hash: SHA512/256"]
     InnerA --> Leaf1["Leaf: Key '1'<br>Value: value1<br>Hash: SHA512/256(value1)"]
@@ -134,17 +144,20 @@ graph TD
         InnerA -.-> Root
         LeafB -.-> Root
     end
-```
+</div>
 
 ### Why XRP Ledger Uses SHAMap
+
 XRPL prioritizes speed and reliability for cross-border payments, not complex smart contracts like Ethereum. SHAMap aligns with this by enabling quick state transitions and verifications during short consensus rounds (3-5 seconds). It avoids MPT's complexity since XRPL's state is less sparse and doesn't require deep contract storage. This choice supports XRPL's scalability and low fees while maintaining security through hash-based proofs.
 
 ---
+
 ## XLM
 
 The Stellar Ledger (XLM) uses a data structure called **BucketListDB** for its state management. This is an optimized, searchable version of the original Bucket List structure, which serves as a Merkle-like hashing mechanism to represent and verify the ledger state (accounts, balances, offers, smart contracts, etc.). Unlike traditional Merkle Trees, it's designed for efficiency in updates and catchup, reflecting Stellar's focus on high-throughput payments and scalability. BucketListDB was introduced to combine hashing and searchability into a single structure, replacing the prior dual-system of a Bucket List for hashing and an SQL key-value store for lookups.
 
 ### Key Components of BucketListDB
+
 - **Bucket List Basis**: The core is a "Bucket List," a leveled structure (typically 10 levels) where each level consists of two buckets (current and snap). Buckets store ledger entries sorted by age—recent changes in smaller, upper-level buckets (fully in memory), older in larger, lower ones. Bucket sizes double per level (e.g., level 0: ~64KB, level 1: ~128KB, up to gigabytes at deeper levels).
 - **Merkle-Like Integration**: It's described as a "Merkle structure" (not a tree) that produces hashes. Each bucket is hashed (using XDR serialization and SHA-256), and hashes are combined cumulatively across levels to form a single "Bucket List Hash" stored in the ledger header. This hash commits to the entire state, enabling quick comparisons for consensus and sync.
 - **Searchability Enhancements**: To make it efficient for lookups (unlike the original Bucket List, which required scanning all levels), BucketListDB adds:
@@ -153,22 +166,26 @@ The Stellar Ledger (XLM) uses a data structure called **BucketListDB** for its s
 - **No Traditional Tree Compression**: Unlike radix trees, it's temporal and leveled, not path-based. Entries are XDR-encoded key-value pairs (e.g., account ID as key, balance as value).
 
 ### How It Works
+
 1. **Storage**: Ledger entries are written to the top bucket (level 0, in memory). When full, it "spills" and merges into the next level, propagating changes downward. Deeper levels are persisted to disk (or configurable remote storage like S3).
 2. **Updates**: Changes are in-memory for recent entries, avoiding disk I/O (unlike Merkle Trees, which require updating many nodes). On ledger close, the Bucket List is updated atomically, and the new hash is computed.
 3. **Verification**: The Bucket List Hash in the ledger header allows nodes to verify state integrity. During consensus, validators compare hashes; mismatches trigger downloading specific buckets from peers. For catchup, nodes fetch only recent buckets (temporal design aids this), not the full history. No built-in Merkle proofs for individual entries (focus on full-state sync), but the structure supports delta computations.
 4. **Efficiency**: Indexes enable O(1) existence checks and fast reads. Persistence options (e.g., in-memory default, disk for validators) balance performance and durability.
 
 Advantages:
+
 - **Performance**: 400% faster reads, 45% less disk usage, 50% faster startup vs. old system. Updates are O(1) disk operations (vs. hundreds in Merkle Trees).
 - **Scalability**: Temporal layering allows quick resync (hours, not full chain). Suited for Stellar's write-once-read-many pattern in consensus.
 - **Security**: Hash chaining ensures tampering alters the root hash; changes are verifiable via peer downloads.
 
 Disadvantages:
+
 - **Complexity**: Leveled merging can lead to occasional "merge storms" (background I/O spikes).
 - **No Light-Client Proofs**: Less emphasis on partial proofs compared to MPT; assumes fuller node participation.
 - **Search Overhead**: Bloom filters can have false positives, requiring secondary checks.
 
 ### Comparison to Merkle Patricia Trie and SHAMap
+
 BucketListDB shares Merkle properties (hash commitments for verification) but differs in design for Stellar's payment-oriented, less state-heavy model (vs. Ethereum's contracts or XRP's escrows). Since Stellar forked from Ripple, BucketList evolved from SHAMap concepts but shifted to leveled buckets for better temporal efficiency.
 
 | Aspect                  | BucketListDB (Stellar)              | SHAMap (XRP Ledger)                 | Merkle Patricia Trie (e.g., Ethereum) |
@@ -183,9 +200,10 @@ BucketListDB shares Merkle properties (hash commitments for verification) but di
 | **Verification**        | Bucket-level hashes for sync        | Path-based Merkle proofs            | Path-based Merkle proofs              |
 
 ### Diagram: Simplified BucketListDB Structure
+
 Here's a visual of BucketListDB with example levels (recent changes at top). Hashes accumulate bottom-up to the root (Bucket List Hash). Entries spill/merge over time.
 
-```mermaid
+<div class="mermaid">
 graph TD
     Root["Bucket List Hash: SHA256(Cumulative Levels)"] --> Level0["Level 0: Small Bucket (In-Memory)<br>Recent Entries e.g., Acct1: Balance Update<br>Hash: SHA256(Bucket0)"]
     Root --> Level1["Level 1: Larger Bucket<br>Older Entries e.g., Acct2: Offer<br>Hash: SHA256(Bucket1)"]
@@ -201,17 +219,20 @@ graph TD
         Level1 -.-> Root
         Level0 -.-> Root
     end
-```
+</div>
 
 ### Why Stellar Uses BucketListDB
+
 Stellar prioritizes fast, low-cost cross-border payments and asset issuance over complex dApps, so BucketListDB optimizes for quick consensus (SCP rounds every 3-5 seconds) and efficient syncing in a federated network. Its temporal design suits catching up after downtime (common in validators), and the single-structure approach reduces redundancy vs. dual systems. Unlike MPT's focus on sparse contract storage or SHAMap's radix for payment channels, BucketListDB aligns with Stellar's simpler state (e.g., no heavy scripting), enabling higher TPS (up to 1,000+) and lower resource use for global financial inclusion.
 
 ---
+
 ## XDC
 
 The XDC Network (XinFin) uses a **Merkle Patricia Trie (MPT)** for its state management, consistent with its EVM-compatible architecture derived from Ethereum. This structure handles the account-based model's world state, including balances, nonces, contract code, and storage, ensuring efficient updates, lookups, and cryptographic verification. As an enterprise-focused blockchain for trade finance and hybrid solutions, XDC leverages MPT to maintain compatibility with Ethereum tools while integrating its Delegated Proof-of-Stake (XDPoS) consensus for faster finality.
 
 ### Key Components of MPT in XDC
+
 XDC's implementation mirrors Ethereum's modified MPT (a hexary radix trie with Patricia compression and Merkle hashing), using Go-based packages for state and trie management:
 - **Trie Structure**: A radix-16 tree where keys (e.g., 160-bit account addresses or 256-bit storage slots) are encoded as hex nibbles (4-bit paths). This allows path-based navigation from root to leaves.
 - **Node Types**:
@@ -222,21 +243,25 @@ XDC's implementation mirrors Ethereum's modified MPT (a hexary radix trie with P
 - **Caching Layer**: A state package provides caching atop the trie to optimize reads/writes, reducing database accesses during transaction processing.
 
 ### How It Works in XDC
+
 1. **Storage**: The "world state" MPT stores all accounts and contract data. Each block header includes the state root hash, linking to the MPT snapshot post-transactions.
 2. **Updates**: Transactions (e.g., transfers or smart contract calls) traverse the trie by key, modifying leaves or inserting nodes. Changes propagate hashes up to a new root. XDC's XDPoS ensures quick validation by masternodes, with blocks produced every ~2 seconds.
 3. **Verification**: Merkle proofs (sibling hashes along the path) allow light clients to verify specific state without the full trie. Consensus (via Istanbul BFT influences) uses the root hash for state agreement.
 4. **Efficiency**: Operations are O(log n) due to trie depth (~64 max for 256-bit keys). XDC optimizes for enterprise with low fees and high TPS (~2,000+), aided by MPT's compactness.
 
 Advantages in XDC:
+
 - **Compatibility**: Enables seamless Ethereum dApp porting and EVM tools.
 - **Security**: Hash-based proofs support XDC's hybrid public-private features.
 - **Scalability**: Compression handles sparse enterprise data (e.g., tokenized assets).
 
 Disadvantages:
+
 - **Update Costs**: Frequent changes can bloat the trie, though XDC mitigates via efficient consensus.
 - **Complexity**: More intricate than simpler structures, but necessary for smart contracts.
 
 ### Comparison to Previous Models (SHAMap in XRP, BucketListDB in XLM)
+
 XDC's MPT is trie-based like SHAMap but compressed, suiting its EVM focus over XRP's payments. Unlike XLM's leveled buckets for temporal efficiency, MPT emphasizes path compression for sparse, persistent state.
 
 | Aspect                  | Merkle Patricia Trie (XDC)          | SHAMap (XRP)                        | BucketListDB (XLM)                  |
@@ -251,9 +276,10 @@ XDC's MPT is trie-based like SHAMap but compressed, suiting its EVM focus over X
 | **Verification**        | Path-based Merkle proofs            | Path-based Merkle proofs            | Bucket-level hashes for sync        |
 
 ### Diagram: Simplified MPT in XDC Context
+
 Here's a representation of an MPT updating an account state (e.g., balance change). Note compression and hash updates.
 
-```mermaid
+<div class="mermaid">
 graph TD
     RootOld["Old Root Hash<br>(Pre-Transaction)"] --> Extension["Extension Node<br>Shared Prefix '0xabc'<br>Hash: Keccak(Extension)"]
     Extension --> Branch["Branch Node<br>Slots: [d: Leaf1, e: Leaf2]<br>Hash: Keccak(Branch)"]
@@ -270,13 +296,14 @@ graph TD
         BranchUpdated -.-> Extension
         Extension -.-> RootNew
     end
-```
+</div>
 
 ### Why XDC Uses Merkle Patricia Trie
 
 XDC's hybrid design (Ethereum-inspired with Quorum elements) targets enterprise applications like supply chain and finance, requiring EVM compatibility for smart contracts and dApps. MPT provides the necessary stateful, verifiable structure for this, allowing secure tokenization and interoperability while XDPoS enhances speed and energy efficiency over Ethereum's PoW/PoS. Unlike XRP/XLM's payment-centric models, XDC's MPT supports complex state (e.g., for ISO 20022 compliance), ensuring Ethereum ecosystem integration without reinventing data structures.
 
 ---
+
 ## Bitcoin
 
 On a side note, 
@@ -284,6 +311,7 @@ On a side note,
 Bitcoin uses a **Merkle Tree** for organizing and verifying transactions within each block, but it does not employ a complex global state trie like MPT for the entire ledger state. Instead, the Unspent Transaction Output (UTXO) set—the core of Bitcoin's state—is managed through a simple key-value database (typically LevelDB in Bitcoin Core implementations). This reflects Bitcoin's UTXO model, where the "state" is implicitly the sum of all unspent outputs rather than explicit account balances. There is no single Merkle root committing to the full UTXO set in the protocol (though proposals like Utreexo use accumulators for compact proofs). The Merkle Tree focuses on per-block transaction integrity.
 
 ### Key Components
+
 - **Merkle Tree**:
   - A binary tree of hashes using double SHA-256 (SHA-256 of SHA-256).
   - Leaves are hashes of individual transactions; internal nodes hash concatenated child hashes.
@@ -296,22 +324,26 @@ Bitcoin uses a **Merkle Tree** for organizing and verifying transactions within 
 - **Block Integration**: Each block includes a Merkle root in its header, linking to the transaction list (starting with coinbase). The UTXO set is derived by scanning the chain or using snapshots (e.g., via assumeutxo for faster syncing).
 
 ### How It Works
+
 1. **Merkle Tree Construction**: For a block's transactions, compute leaf hashes, then pair and hash upward. Odd-numbered leaves duplicate the last hash. The root summarizes all txs for verification.
 2. **UTXO Updates**: New blocks add outputs to the UTXO set and remove spent inputs. Verification checks signatures (ECDSA secp256k1) and ensures no double-spends by confirming UTXO existence.
 3. **Verification**: Light clients use Merkle proofs (sibling hashes) to confirm tx inclusion without full blocks. Full nodes maintain the UTXO DB for quick spendability checks; no global proofs for the entire state.
 4. **Efficiency**: Merkle operations are O(log n) for proofs; UTXO DB allows O(1) lookups with caching.
 
 Advantages:
+
 - **Simplicity**: Easy to verify tx inclusion and prevent double-spends without complex state.
 - **Privacy/Scalability**: UTXOs are discrete, enabling parallelism and coinjoin-like mixing.
 - **Security**: Double-hashing resists collisions; UTXO model avoids replay issues.
 
 Disadvantages:
+
 - **No Global State Proofs**: Harder for light clients to verify full balances without chain scan.
 - **Bloat**: UTXO set can grow (e.g., dust outputs), though pruning helps.
 - **Limited Programmability**: Basic scripts vs. full smart contracts.
 
 ### Comparison to Previous Models
+
 Bitcoin's approach is transaction-centric, differing from account-based tries by avoiding persistent state commitments.
 
 | Aspect                  | Merkle Tree + UTXO DB (Bitcoin)     | SHAMap (XRP)                        | BucketListDB (XLM)                  | Merkle Patricia Trie (XDC/Ethereum) |
@@ -326,9 +358,10 @@ Bitcoin's approach is transaction-centric, differing from account-based tries by
 | **Verification**        | Per-block Merkle proofs              | Path-based Merkle proofs            | Bucket hashes for sync              | Path-based Merkle proofs            |
 
 ### Mermaid Diagram: Simplified Merkle Tree + UTXO Flow
+
 Here's a visual of a Merkle Tree in a block and how it ties to UTXO updates (e.g., tx consumes UTXOs, creates new ones).
 
-```mermaid
+<div class="mermaid">
 graph TD
     Block[Block Header<br>Merkle Root Hash] --> TxList[Transactions List]
     TxList --> Tx1["Tx1: Coinbase<br>Output: New UTXO (Reward)"]
@@ -349,7 +382,8 @@ graph TD
         Internal1 -.-> MerkleRoot
         Internal2 -.-> MerkleRoot
     end
-```
+</div>
 
 ### Why Bitcoin Uses This Approach
+
 Bitcoin's design prioritizes security, decentralization, and simplicity as a peer-to-peer electronic cash system. The Merkle Tree enables efficient light-client verification (e.g., SPV wallets check tx inclusion without full blocks), while the UTXO DB supports quick validation of spendability in a model that avoids mutable accounts—reducing attack vectors like replays. This aligns with Bitcoin's focus on being a store of value with basic scripting, not complex dApps, allowing high parallelism and privacy. Proposals like assumeutxo enhance syncing by providing verifiable UTXO snapshots, but the core remains unchanged for stability.

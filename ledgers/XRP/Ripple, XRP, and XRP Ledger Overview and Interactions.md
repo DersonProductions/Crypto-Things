@@ -7,6 +7,7 @@ This document provides a detailed analysis of **Ripple**, **XRP**, and the **XRP
 ## 1. Definitions and Roles
 
 ### 1.1 Ripple
+
 - **Definition**: Ripple is a decentralized payment system designed for fast, low-cost cross-border transactions and currency exchanges, supporting both its native cryptocurrency (XRP) and other currencies via IOUs (credit-based transactions).
 - **Role**:
   - Facilitates payments in XRP or IOUs, enabling users to transfer value globally [2, p. 2].
@@ -18,6 +19,7 @@ This document provides a detailed analysis of **Ripple**, **XRP**, and the **XRP
   - Processes transactions in seconds, unlike Bitcoin’s hour-long confirmations [2, p. 8].
 
 ### 1.2 XRP
+
 - **Definition**: XRP is the native cryptocurrency of the Ripple network and XRP Ledger, designed for efficient value transfer.
 - **Role**:
   - **Medium of Exchange**: Enables direct, trustless payments on the XRP Ledger [2, p. 3].
@@ -29,6 +31,7 @@ This document provides a detailed analysis of **Ripple**, **XRP**, and the **XRP
   - Enforceable on the ledger, unlike IOUs, which rely on trust [2, p. 3].
 
 ### 1.3 XRP Ledger
+
 - **Definition**: The XRP Ledger is a distributed, open-source ledger (blockchain-like structure) that records all transactions, account balances, and trust relationships, serving as the Ripple network’s “ground truth” [3, p. 2].
 - **Role**:
   - **Transaction Record**: Stores XRP payments, IOUs, offers, and trust settings [1, p. 3].
@@ -44,6 +47,7 @@ This document provides a detailed analysis of **Ripple**, **XRP**, and the **XRP
 The XRP Ledger is the core blockchain-like structure of the Ripple ecosystem. Below, we detail how Ripple and XRP interact with it.
 
 ### 2.1 Ripple’s Interaction
+
 - **Payment Processing**: Ripple processes XRP and IOU transactions on the XRP Ledger, ensuring validation and consistency [1, p. 1].
 - **Consensus Participation**: Validating servers (mostly Ripple Labs-run) execute XRP LCP to validate transaction sets, updating the ledger [2, p. 3].
 - **IOU Transactions**: Records trust lines and credit balances for IOU payments, ensuring sufficient credit exists along payment paths [2, p. 3].
@@ -51,12 +55,14 @@ The XRP Ledger is the core blockchain-like structure of the Ripple ecosystem. Be
 - **Centralized Control**: Ripple Labs’ control over validating servers centralizes ledger security [2, p. 9].
 
 ### 2.2 XRP’s Interaction
+
 - **Native Asset**: XRP transactions are recorded directly on the ledger, updating account balances [1, p. 3].
 - **Fees**: Small XRP fees, burned to deter spam, are logged on the ledger [1, p. 1].
 - **Bridge Currency**: XRP facilitates currency exchanges via ledger transactions [2, p. 3].
 - **Account Creation**: Requires a minimum 20 XRP payment to create an account, recorded as an AccountRoot node [2, p. 4].
 
 ### 2.3 Ripple and XRP Interaction
+
 - **XRP Payments**: Ripple uses XRP for fast, trustless payments on the ledger [2, p. 3].
 - **Currency Exchange**: Market makers leverage XRP to offer trades (e.g., XRP/BTC), recorded as OfferCreate transactions [2, p. 14].
 - **Consensus**: Validating servers ensure both XRP and IOU transactions are validated, with XRP transactions being enforceable [1, p. 1; 2, p. 3].
@@ -75,6 +81,7 @@ The XRP Ledger resembles a blockchain but differs from Bitcoin’s:
 The XRP LCP’s safety (fork prevention) and liveness (forward progress) depend on UNL overlap and fault tolerance. Below, we formalize these using LaTeX.
 
 #### Safety (Fork Prevention)
+
 To prevent forks (two honest nodes validating conflicting ledgers), the UNL overlap must satisfy specific conditions. Assuming Byzantine accountability (nodes cannot send conflicting messages undetected), Proposition 1 states [1, p. 11]:
 
 $$ \left|\mathrm{UNL}_i \cap \mathrm{UNL}_j\right| > n_i - q_i + n_j - q_j $$
@@ -94,13 +101,16 @@ Where $t_{i,j} = \min(t_i, t_j, \left|\mathrm{UNL}_i \cap \mathrm{UNL}_j\right|)
 $$ |UNL_i ∩ UNL_j| > (\frac{n_j}{2}) + (n_i - q_i) + t_{i,j} $$
 
 This demands ~90% overlap with 80% quorums and 20% faults [1, p. 18]. The original whitepaper’s 20% overlap claim was incorrect [3, p. 5; 4].
+
 #### Liveness (Forward Progress)
+
 The FLP impossibility result prevents guaranteed liveness in asynchronous networks [1, p. 18]. Under weak asynchrony (bounded delays, no faults), censorship resilience is ensured [1, p. 5]. Theorem 11 states that in a network with a single UNL and leaf validators, the XRP Ledger cannot get stuck [1, p. 20]. However, Example 9 shows that with 99% UNL overlap, the network can stall if nodes validate conflicting branches [1, p. 19].
 
 ## 4. Differences and Similarities
 
 ### Diagram: System Architecture
-```mermaid
+
+<div class="mermaid">
 graph TD
     A[Ripple Payment System] -->|Processes Transactions| B(XRP Ledger)
     A -->|Uses for Payments/Exchange| C(XRP)
@@ -115,10 +125,11 @@ graph TD
         C
         D
     end
-```
+</div>
 
 ### Diagram: Differences and Similarities
-```mermaid
+
+<div class="mermaid">
 classDiagram
     class Ripple {
         +Payment System
@@ -144,22 +155,26 @@ classDiagram
     note for Ripple "Centralized control, supports IOUs"
     note for XRP "Fast, trustless, pre-mined"
     note for XRP_Ledger "Blockchain-like, no mining"
-```
+</div>
 
 ## 5. Usage Patterns (2013–2015)
+
 - **Transactions**: Over 33 million transactions across 4.6 million ledgers, but >99% of accounts had few transactions [2, p. 13].
 - **Types**: 60% OfferCreate, 20% OfferCancel, <15% payments (mostly XRP) [2, p. 14].
 - **Ledger Closure**: 99% of ledgers closed in <20 seconds [2, p. 13].
 - **Market**: XRP payments dominated; fiat trades included large, possibly test amounts [2, p. 15].
 
 ## 6. Future Directions
+
 - **Cobalt Algorithm**: Proposes >60% UNL overlap, ensuring liveness under faults and asynchrony [1, p. 21].
 - **Decentralization**: Plans to diversify node operators to reduce Ripple Labs’ control [1, p. 19; 2, p. 12].
 
 ## 7. Conclusion
+
 Ripple is a payment system leveraging XRP and the XRP Ledger for fast, global transactions. XRP serves as a trustless currency and fee mechanism, while the XRP Ledger, a blockchain-like structure, ensures consistency via XRP LCP. High UNL overlap (>90%) is critical for safety, though centralization and liveness challenges persist.
 
 ## References
+
 1. Chase, B., & MacBrough, E. (2018). Analysis of the XRP Ledger Consensus Protocol. arXiv:1802.07242 [1]. [https://github.com/DersonProductions/Crypto-Things/blob/main/XRP/Analysis%20of%20the%20XRP%20Ledger%20Consensus%20Protocol%201802.07242v1.pdf](https://github.com/DersonProductions/Crypto-Things/blob/main/XRP/Analysis%20of%20the%20XRP%20Ledger%20Consensus%20Protocol%201802.07242v1.pdf)
 2. Armknecht, F., et al. (2015). Ripple: Overview and Outlook. TRUST 2015 [2]. [https://github.com/DersonProductions/Crypto-Things/blob/main/XRP/ripple_overview_whitepaper.pdf](https://github.com/DersonProductions/Crypto-Things/blob/main/XRP/ripple_overview_whitepaper.pdf)
 3. Schwartz, D., Youngs, N., & Britto, A. (2014). The Ripple Protocol Consensus Algorithm [3]. [https://github.com/DersonProductions/Crypto-Things/blob/main/XRP/ripple_consensus_whitepaper.pdf](https://github.com/DersonProductions/Crypto-Things/blob/main/XRP/ripple_consensus_whitepaper.pdf)

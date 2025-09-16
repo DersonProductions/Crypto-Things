@@ -16,9 +16,11 @@ This file provides starter guides, commands, code snippets, hints, and sample so
 ## Beginner: Permissioning Setup
 
 ### Exercise Prompt
+
 Generate a CA and node cert; configure a Quorum node to use it.
 
 ### Starter Commands
+
 1. Generate CA:
 
 ```
@@ -35,11 +37,13 @@ openssl req -new -key node.key -out node.csr -subj "/CN=BankNode1"
 3. TODO: Sign CSR and configure Quorum.
 
 ### Hints
+
 - Sign: `openssl x509 -req -in node.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out node.crt -days 365`.
 - Config: In Quorum start command, add `--tls-server-cert=node.crt --tls-server-key=node.key --tls-known-clients=ca.crt`.
 - Test: Start node; attempt join without cert to see rejection.
 
 ### Sample Solution
+
 Sign CSR:
 
 ```
@@ -57,9 +61,11 @@ Verify logs for successful permissioned mode. This sets up basic PKI for node au
 ## Intermediate: Contract Deployment
 
 ### Exercise Prompt
+
 Deploy PaymentBank; register a mobile and mint initial balance.
 
 ### Starter Code
+
 Use Solidity from doc; deploy with Remix or script.
 
 In Node.js (`deploy-contract.js`):
@@ -74,12 +80,14 @@ const abi = [/* ABI */];
 ```
 
 ### Hints
+
 - Deploy: `w3.eth.sendTransaction({ data: bytecode })` or use ethereumjs-tx for signing.
 - Register: `contract.methods.registerMobile('+123', '0xAddr').send({ from: owner })`.
 - Mint: `contract.methods.mint('0xAddr', 1000).send({ from: owner })`.
 - Get address from receipt.contractAddress.
 
 ### Sample Solution
+
 Deploy script snippet:
 
 ```javascript
@@ -103,9 +111,11 @@ Run: Deploys, registers mobile, mints balance. Verify with `balances` query.
 ## Advanced: Private Transfer
 
 ### Exercise Prompt
+
 Implement a transfer with privateFor; verify only involved parties see it.
 
 ### Starter Code
+
 Extend intermediate; add to `private-transfer.js`:
 
 ```javascript
@@ -120,12 +130,14 @@ const toBankPubKey = 'QfeDAys9MPDs2XHExtc84jKGHxZg/aj52DTh0vtA3Xc='; // Mock Tes
 ```
 
 ### Hints
+
 - Encode data: `contract.methods.transfer(mobileTo, amount).encodeABI()`.
 - Tx object: Add `privateFor: [toBankPubKey]` in sendSignedTransaction (Quorum extension).
 - Verify: On sender/receiver node, `eth.getTransaction(txHash)` shows data; on others, it's hashed.
 - Use two Geth attaches for testing.
 
 ### Sample Solution
+
 Complete:
 
 ```javascript
@@ -154,6 +166,7 @@ privateTransfer('+1234567890', 100);
 Test: Broadcast; check visibility on nodes. Ensures private banking transfers.
 
 ## Further Challenges
+
 - Multi-Bank Permissioning: Add QNM to automate node onboarding with certs.
 - Compliance Integration: Add oracle call in contract for KYC verification.
 - Staking for Banks: Implement staking for liquidity providers in payments (link to 12-staking-and-interest-bearing-actions.md).

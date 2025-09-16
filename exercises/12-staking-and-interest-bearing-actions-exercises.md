@@ -16,9 +16,11 @@ This file provides starter code, hints, and sample solutions for the exercises i
 ## Beginner: Calculate Interest
 
 ### Exercise Prompt
+
 Write a script for simple and compound interest calculations.
 
 ### Starter Code
+
 In Python (`interest-calc.py`):
 
 ```python
@@ -36,11 +38,13 @@ def compound_interest(principal, rate, periods, time):
 ```
 
 ### Hints
+
 - Simple: return principal * rate * time
 - Compound: Use math.pow(1 + rate / periods, periods * time) * principal
 - Expected: Simple ~50, Compound ~51.16 for test values.
 
 ### Sample Solution
+
 Complete:
 
 ```python
@@ -65,9 +69,11 @@ Run: Outputs interest values. Extend to continuous with math.exp(r * t).
 ## Intermediate: Deploy Staking
 
 ### Exercise Prompt
+
 Deploy RewardToken and Staking; stake from an account.
 
 ### Starter Code
+
 In Node.js (`deploy-staking.js`):
 
 ```javascript
@@ -80,6 +86,7 @@ const w3 = new Web3('http://localhost:8545');  // Dev node
 ```
 
 ### Hints
+
 - Compile Solidity from doc (use online solc or Remix for ABI/bytecode).
 - Deploy: Send tx with bytecode.
 - Staking constructor takes token address.
@@ -87,6 +94,7 @@ const w3 = new Web3('http://localhost:8545');  // Dev node
 - Stake: staking.methods.stake(100).send()
 
 ### Sample Solution
+
 Assuming ABI/bytecode ready:
 
 ```javascript
@@ -116,9 +124,11 @@ Run: Deploys contracts, stakes. Verify with `stakes[address]`.
 ## Advanced: Claim and Compound
 
 ### Exercise Prompt
+
 Implement claim; add auto-compound on unstake.
 
 ### Starter Code
+
 Extend contract Solidity:
 
 ```solidity
@@ -131,12 +141,14 @@ function unstake(uint256 amount) public {
 In JS: Call claim/unstake.
 
 ### Hints
+
 - In contract: Calculate rewards, add to stakes[msg.sender] for compound.
 - Then unstake amount (after update).
 - JS: `staking.methods.claimRewards().send(); staking.methods.unstake(50).send();`
 - Verify: Check balances before/after.
 
 ### Sample Solution
+
 Updated contract:
 
 ```solidity
@@ -167,6 +179,7 @@ claimAndCompoundUnstake();
 This compounds on unstake; adapt for periodic compounding.
 
 ## Further Challenges
+
 - Liquid Staking: Issue receipt tokens on stake.
 - Governance: Add voting power based on stakes.
 - Integration: Link to bank payments (11) for interest on deposits.

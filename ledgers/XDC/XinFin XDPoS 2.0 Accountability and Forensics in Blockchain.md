@@ -21,7 +21,7 @@ $$
 \text{Security guaranteed if } \frac{\text{Honest participants}}{\text{Total participants}} > x
 $$
 
-Where $\( x = 0.5 \)$ for PoW (Bitcoin) and $\( x = \frac{1}{3} \)$ for PoS (Algorand, HotStuff).
+Where \(x = 0.5\) for PoW (Bitcoin) and \(x = \dfrac{1}{3}\) for PoS (Algorand, HotStuff).
 
 ## XDPoS 2.0 Overview
 
@@ -45,7 +45,7 @@ Initially, XDPoS 2.0 uses the ranking method for compatibility, with plans to ad
 
 **Diagram: Master Node Election Process**
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[Start of Epoch] --> B{Candidates Meet Criteria?}
     B -->|Yes| C[Rank by Deposit or VRF Selection]
@@ -55,7 +55,7 @@ graph TD
     F --> G[Create 900 Blocks]
     D --> H[Passively Monitor Blockchain]
     G --> A
-```
+</div>>
 
 ### 2. HotStuff Consensus Engine
 
@@ -64,11 +64,12 @@ The HotStuff protocol is a BFT state machine replication (SMR) protocol that ens
 #### Protocol Mechanics
 
 - **Committee**: The 108 master nodes form the BFT committee, ordered by account address.
-- **Rounds**: Each round has a leader (chosen round-robin) who proposes a block. The block includes a **Quorum Certificate (QC)** for the parent block, requiring votes from at least $\( t_H = \lceil \text{VALIDATOR_SET_SIZE} \times \frac{2}{3} \rceil = \lceil 108 \times \frac{2}{3} \rceil = 72 \)$ nodes.
+-- **Rounds**: Each round has a leader (chosen round-robin) who proposes a block. The block includes a **Quorum Certificate (QC)** for the parent block, requiring votes from at least \(t_H = \left\lceil \dfrac{\mathrm{VALIDATOR\_SET\_SIZE} \times 2}{3} \right\rceil = \left\lceil \dfrac{108 \times 2}{3} \right\rceil = 72\) nodes.
+
 - **Data Structures**:
   - **Block**: Contains a `parentQC` field in the header, linking to the parent block’s QC.
-  - **QC**: Includes the round number, block hash, and signatures from $\( t_H \)$ voters.
-  - **Timeout Certificate (TC)**: Formed if $\( t_H \)$ nodes report a timeout, skipping a round.
+  - **QC**: Includes the round number, block hash, and signatures from \(t_H\) voters.
+  - **Timeout Certificate (TC)**: Formed if \(t_H\) nodes report a timeout, skipping a round.
 - **Rules**:
   - **Leader Proposal**: The leader proposes a block with the latest QC.
   - **Locking Rule**: Nodes lock on the grandparent block’s QC, ignoring non-descendant blocks.
@@ -78,7 +79,7 @@ The HotStuff protocol is a BFT state machine replication (SMR) protocol that ens
 
 **Diagram: HotStuff Protocol Flow**
 
-```mermaid
+<div class="mermaid">
 sequenceDiagram
     participant L as Leader
     participant M as Master Nodes
@@ -95,7 +96,7 @@ sequenceDiagram
         N->>M: Broadcast TC
     end
     Note over M: Finalize 3-chain blocks
-```
+</div>
 
 #### Safety and Liveness
 
@@ -114,12 +115,13 @@ Blocks are finalized in 6 seconds, allowing instant reward distribution to maste
 
 XDPoS 2.0 introduces a judiciary-like system through forensic monitoring, enabling the identification and penalization of malicious nodes. This addresses **safety violations** (e.g., forking) and **liveness violations** (e.g., underperforming nodes).
 
+
 #### Safety Violation
 
 If over one-third of master nodes are Byzantine, they can create forks. However, these actions require signed messages, which are embedded in the blockchain. The forensic system identifies culpable nodes via **quorum intersections**:
 
 $$
-\text{Intersection size} = \text{VALIDATOR_SET_SIZE} / 3 \approx 108 / 3 = 36
+	ext{Intersection size} = \frac{\mathrm{VALIDATOR\_SET\_SIZE}}{3} \approx \frac{108}{3} = 36
 $$
 
 At least 36 Byzantine nodes can be identified, with proof from two honest nodes holding conflicting blockchains. Penalties (e.g., slashing deposits) are enforced via a governance-driven smart contract.
@@ -138,7 +140,7 @@ The forensic module includes:
 
 **Diagram: Forensic Monitoring Structure**
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[Forensic Storage] -->|Stores QCs, Blocks, Blame Messages| B[Detector]
     B -->|Monitors Nodes| C[Penalty Mechanism]
@@ -147,7 +149,7 @@ graph TD
     B -->|RPC Requests| A
     B --> F[Dashboard]
     F -->|Displays Forensic Data| B
-```
+</div>
 
 ## Seamless Upgrade Plan
 

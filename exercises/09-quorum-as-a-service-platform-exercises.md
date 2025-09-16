@@ -15,9 +15,11 @@ This file provides starter guides, commands, hints, and sample solutions for the
 ## Beginner: Cloud/Container Quiz
 
 ### Exercise Prompt
+
 Differentiate IaaS vs. PaaS; explain Docker's role in containerization.
 
 ### Starter/Solution
+
 This is a conceptual exercise. No code; write a short summary.
 
 Sample response:
@@ -30,9 +32,11 @@ Research via cloud provider docs if needed.
 ## Intermediate: Minikube Setup
 
 ### Exercise Prompt
+
 Install Minikube, deploy a sample pod, and expose it as a service.
 
 ### Starter Commands
+
 1. Install Minikube: Follow https://minikube.sigs.k8s.io/docs/start/ (platform-specific).
 2. Start: `minikube start --driver=docker`.
 3. Deploy pod:
@@ -44,12 +48,14 @@ kubectl run sample-pod --image=nginx --port=80
 4. TODO: Expose and access.
 
 ### Hints
+
 - Verify: `kubectl get pods` (should show sample-pod running).
 - Expose: `kubectl expose pod sample-pod --type=NodePort --port=80`.
 - Access: `minikube service sample-pod` (opens browser).
 - Cleanup: `kubectl delete service sample-pod; kubectl delete pod sample-pod`.
 
 ### Sample Solution
+
 After deploy:
 
 ```
@@ -62,9 +68,11 @@ Browse to the URL: See Nginx welcome page. This simulates basic container deploy
 ## Advanced: Quorum Helm Deploy
 
 ### Exercise Prompt
+
 Customize and deploy Quorum via Helm; scale to 3 nodes.
 
 ### Starter Commands
+
 1. Add repo: `helm repo add quorum https://charts.quorum.consensys.net; helm repo update`.
 2. Create `values.yaml` (see examples for template, set replicas=3, consensus=raft).
 3. Install:
@@ -76,12 +84,14 @@ helm install my-quorum quorum/quorum -f values.yaml
 4. TODO: Verify and scale.
 
 ### Hints
+
 - Verify: `kubectl get pods` (look for 3 Quorum pods ready).
 - Scale: Edit values.yaml replicas=3, then `helm upgrade my-quorum quorum/quorum -f values.yaml`.
 - Access RPC: `kubectl port-forward svc/my-quorum-geth-rpc 8545:8545` (test with curl).
 - Uninstall: `helm uninstall my-quorum`.
 
 ### Sample Solution
+
 With customized values.yaml (replicas=3, consensus=raft):
 
 ```
@@ -92,6 +102,7 @@ kubectl get pods -l app.kubernetes.io/name=quorum  # Shows 3 pods
 Connect via web3.js to localhost:8545 after port-forward. This creates a scalable QaaS prototype.
 
 ## Further Challenges
+
 - Integrate QNM: Deploy QNM operator and apply a QuorumNode CRD.
 - Cloud Migration: Adapt to AWS EKS (create cluster, install Helm chart).
 - Staking Service: Deploy a staking contract pod on the Quorum cluster (link to 12-staking-and-interest-bearing-actions.md).

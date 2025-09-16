@@ -23,7 +23,7 @@ PoW achieves BFT by making it economically and computationally expensive for mal
 ### PoW Diagram
 This diagram shows the mining competition and chain resolution process in PoW, highlighting how it tolerates up to 50% malicious power through computational effort.
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[New Transactions] --> B[Miners Collect into Block]
     B --> C[Solve Cryptographic Puzzle]
@@ -34,7 +34,7 @@ graph TD
     F --> H[Resolve Forks via Longest Chain Rule]
     H --> I[Consensus Achieved]
     G --> A
-```
+</div>
 
 **Explanation**: Miners race to solve puzzles; the longest chain ensures BFT by making attacks expensive and probabilistic.
 
@@ -48,7 +48,7 @@ PoS incorporates BFT through variants like BFT-style PoS, which ensures consensu
 
 This illustrates validator selection and attestation in PoS, with slashing for faults to enforce honesty.
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[New Transactions] --> B[Validators Stake Assets]
     B --> C[Random Selection of Proposer]
@@ -59,7 +59,7 @@ graph TD
     F --> H[Consensus Achieved]
     G --> B
     H --> A
-```
+</div>
 
 **Explanation**: Stakes act as collateral; BFT is achieved by tolerating up to 33% faulty stakes in variants, with economic penalties deterring attacks.
 
@@ -73,7 +73,7 @@ PoA achieves BFT by relying on a small group of trusted nodes, tolerating faults
 
 This depicts the authority-based validation in PoA, relying on trusted identities for quick agreement.
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[New Transactions] --> B[Pre-Approved Authorities]
     B --> C[Assigned Validator Proposes Block]
@@ -83,7 +83,7 @@ graph TD
     E --> G[Consensus Achieved]
     F --> B
     G --> A
-```
+</div>
 
 **Explanation**: PoA uses identity verification for BFT, tolerating up to 50% faults if authorities remain honest, ideal for permissioned networks.
 
@@ -97,7 +97,7 @@ In blockchain, PBFT ensures consensus by tolerating up to one-third faulty nodes
 
 This outlines the multi-phase voting in PBFT for deterministic finality.
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[New Transactions] --> B[Primary Node Proposes Block]
     B --> C[Pre-Prepare Phase: Broadcast Proposal]
@@ -108,7 +108,7 @@ graph TD
     F --> H[Consensus Achieved]
     G --> B
     H --> A
-```
+</div>
 
 **Explanation**: PBFT tolerates up to 33% faulty nodes through phased agreement, ensuring safety and liveness in adversarial settings.
 
@@ -120,7 +120,7 @@ Beyond the core ones, several protocols extend BFT in blockchain:
  
 This diagram shows delegate election and block production in DPoS for efficient consensus.
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[New Transactions] --> B[Stakeholders Vote for Delegates]
     B --> C["Elected Delegates (e.g., 21 Nodes)"]
@@ -131,7 +131,7 @@ graph TD
     F --> H[Consensus Achieved]
     G --> B
     H --> A
-```
+</div>
 
 **Explanation**: DPoS achieves BFT by limiting validators to elected delegates, tolerating up to 33% faults with quick replacement mechanisms.
 
@@ -139,7 +139,7 @@ graph TD
 
 This diagram illustrates the round-based proposal and voting in Tendermint, integrated with PoS.
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[New Transactions] --> B[Proposer Selected via PoS]
     B --> C[Propose Block]
@@ -150,7 +150,7 @@ graph TD
     F --> H[Consensus Achieved]
     G --> B
     H --> A
-```
+</div>
 
 **Explanation**: Tendermint provides BFT with up to 33% fault tolerance, using locked votes for fast finality and interoperability.
 
@@ -159,7 +159,7 @@ graph TD
 This diagram depicts the pipelined, linear communication in HotStuff for scalable BFT.
 
 <!--
-```mermaid
+<div class="mermaid">
 graph TD
     A[New Transactions] -- B[Leader Proposes Block]
     B -- C[Nodes Vote on Proposal]
@@ -171,10 +171,10 @@ graph TD
     G -- I[Consensus Achieved]
     H -- B
     I -- A
-``` 
+</div>
 -->
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[New Transactions] --> B[Leader Collects Transactions]
     B --> C[Propose: Leader Broadcasts Block]
@@ -192,7 +192,7 @@ graph TD
     subgraph Pipeline
         F -->|Next Block Proposal| C
     end
-```
+</div>
 
 **Explanation**: HotStuff enhances PBFT with linear messaging, tolerating 33% faults while improving throughput via pipelining and dynamic leaders.
 
@@ -216,7 +216,7 @@ This table highlights trade-offs in achieving BFT consensus.
 
 This diagram shows the general flow of achieving consensus in a BFT system, highlighting the steps nodes take to agree on a valid blockchain state despite potential faults.
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[Start: New Transactions] --> B[Nodes Receive Transactions]
     B --> C[Leader/Validator Proposes Block]
@@ -228,7 +228,7 @@ graph TD
     G --> H[Broadcast to Network]
     H --> I[Update Ledger State]
     I --> A
-```
+</div>
 
 **Explanation**: This flowchart captures the BFT process where nodes propose, validate, and agree on blocks. If faulty nodes (up to 33% or 50% depending on the protocol) are detected, they are isolated, and the process retries until consensus is reached. This applies broadly to BFT-based protocols like PBFT, Tendermint, or HotStuff.
 
@@ -236,7 +236,7 @@ graph TD
 
 This diagram contrasts the workflows of PoW, PoS, PoA, and PBFT, showing how each achieves BFT consensus.
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[New Transactions] --> B{PoW}
     A --> C{PoS}
@@ -267,7 +267,7 @@ graph TD
     E5 --> F
 
     F --> G[Update Blockchain]
-```
+</div>
 
 **Explanation**: This diagram outlines the distinct steps each protocol takes to achieve BFT consensus:
 - **PoW**: Miners compete to solve puzzles, and the longest chain ensures fault tolerance.

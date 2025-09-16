@@ -29,6 +29,7 @@ Challenges: Differing consensus models, security risks (e.g., bridge hacks), and
 ## Various Technologies and Patterns for Blockchain Interoperability
 
 ### Technologies
+
 - **Bridges**: Relay data/assets between chains (e.g., Wormhole, Axelar for cross-chain messaging).
 - **Sidechains and Layer-2**: Pegged to main chains (e.g., Polygon for Ethereum).
 - **Hub-and-Spoke Models**: Central hubs like Cosmos IBC or Polkadot parachains.
@@ -38,6 +39,7 @@ Challenges: Differing consensus models, security risks (e.g., bridge hacks), and
 As of 2025, trends include modular designs and zero-knowledge proofs for privacy-preserving interoperability.
 
 ### Patterns
+
 - **Notary Schemes**: Trusted parties attest transactions (e.g., federated bridges).
 - **Hashed Time-Lock Contracts (HTLCs)**: Time-bound swaps.
 - **Relay Chains**: Intermediate chains validate headers.
@@ -49,6 +51,7 @@ As of 2025, trends include modular designs and zero-knowledge proofs for privacy
 Simulate FedCoins using Quorum for private chains and a bridge for interoperability.
 
 ### Step-by-Step Guide
+
 1. **Set Up Two Quorum Networks**: Represent two "countries" (e.g., using quorum-dev-quickstart).
 2. **Implement a Bridge**: Use a simple relay or Chainlink for cross-chain.
 3. **Smart Contracts for FedCoins**: ERC-20-like tokens with mint/burn for transfers.
@@ -56,7 +59,7 @@ Simulate FedCoins using Quorum for private chains and a bridge for interoperabil
 
 Example: Docker-compose for multi-chain setup.
 
-```docker
+```yaml
 # docker-compose.yml for multi-chain interoperable setup
 # This example sets up two separate Quorum networks (Chain A and Chain B) using Docker,
 # simulating two "countries" for FedCoin interoperability. Each chain has a single node for simplicity.
@@ -131,7 +134,7 @@ volumes:
 
 #### Interoperable Network Diagram
 
-```mermaid
+<div class="mermaid">
 graph LR
     subgraph NetworkA["Chain A (e.g., Quorum Network 1)"]
         NodeA["Node(s)"]
@@ -151,11 +154,12 @@ graph LR
     style NetworkA fill:#09f,stroke:#333,stroke-dasharray:5
     style Bridge fill:#b0f,stroke:#333,stroke-dasharray:5
     style NetworkB fill:#09f,stroke:#333,stroke-dasharray:5
-```
+</div>
 
 ## Hands-On Examples
 
 ### Example 1: Simulate Cross-Chain Transfer in JS
+
 Using web3.js for two local nodes.
 
 ```javascript
@@ -173,17 +177,21 @@ async function crossChainTransfer(from, to, amount) {
 Full script in `/examples/08-interoperable-blockchains-example.js`.
 
 ### Example 2: FedCoin Prototype
+
 Solidity contract for CBDC token with cross-chain hooks.
 
 ## Exercises
 
 ### Beginner: Research Patterns
+
 1. List 3 interoperability patterns and their pros/cons.
 
 ### Intermediate: Set Up Dual Chains
+
 2. Launch two local Quorum nodes and connect via web3.js.
 
 ### Advanced: Implement Relay
+
 3. Build a simple JS relay for message passing between chains.
 
 Starters in `/exercises/08-interoperable-blockchains-exercises.md`.
@@ -195,6 +203,7 @@ Starters in `/exercises/08-interoperable-blockchains-exercises.md`.
 - Staking in Multi-Chain: Cross-chain staking pools (12-staking-and-interest-bearing-actions.md).
 
 ## References and Further Reading
+
 - Blockchain Interoperability: The Current State in 2025
 - Towards Blockchain Interoperability: A Comprehensive Survey
 - Blockchain Interoperability Patterns

@@ -53,14 +53,14 @@ Nodes use a process called **federated voting** to agree on statements, like “
 
 **Diagram**: Federated Voting Process
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[Vote] --> B[Accept]
     B --> C[Confirm]
     A -->|Quorum agrees| B
     B -->|v-blocking set agrees| B
     B -->|Quorum accepts| C
-```
+</div>>
 
 ### 3. **Balloting**
 
@@ -111,12 +111,12 @@ $$
 
 **Diagram**: Quorum Intersection
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[Quorum U1<br>#123;v1, v2, v3#125;] -->|Shares v3| B[Shared Node v3]
     C[Quorum U2<br>#123;v3, v4, v5#125;] -->|Shares v3| B
     B --> D[Ensures Agreement]
-```
+</div>
 
 ---
 

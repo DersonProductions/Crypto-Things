@@ -3,12 +3,14 @@
 NOTE: This is a generated response to the Whitepaper presented [https://github.com/DersonProductions/Crypto-Things/blob/main/XDC/whitepaper-xdc-gasless-subnet.pdf](https://github.com/DersonProductions/Crypto-Things/blob/main/XDC/whitepaper-xdc-gasless-subnet.pdf) on XDC Gasless Subnets.
 
 ## What is the XDC Gasless Subnet?
+
 The XDC gasless subnet is a sovereign, permissioned blockchain network that operates as a Layer-2 solution within the XDC Network ecosystem. It replicates the features of the XDC mainnet, such as its Delegated Proof of Stake (DPoS) consensus mechanism ([XDPoS 2.0](https://github.com/DersonProductions/Crypto-Things/blob/main/XDC/XinFin%20XDPoS%202.0%20Accountability%20and%20Forensics%20in%20Blockchain.md)), while allowing customization for specific enterprise or application needs. The "gasless" feature enables transactions without requiring users to pay gas fees in XDC tokens, as fees can be subsidized by the subnet operator or covered through alternative mechanisms, making it user-friendly for enterprise and consumer applications.[](https://www.xinfin.io/xdc-subnet)
 
 ## XDC Network Architecture
+
 The following diagram illustrates the XDC Network’s structure, showing how Master Nodes interact with various blockchain networks (Network 1 and Network 2), each containing public and private chains. This architecture underpins the gasless subnet’s ability to inherit security from the XDC mainnet while operating independently.
 
-```mermaid
+<div class="mermaid">
 graph TD
     subgraph " "
         MN[Master Nodes<br>Blockchain<br>Public<br>Private]
@@ -46,7 +48,8 @@ graph TD
     MN -->|...| Network1_3
     MN -->|...| Network2_1
     MN -->|...| Network2_2
-```
+</div>
+
 *Figure 1: The XDC Network*
 
 ##Clients and dApps in the XDC Ecosystem
@@ -86,6 +89,7 @@ graph TD
 *Figure 2: Clients and dApps Interaction with Subnets and Mainnet*
 
 ## Benefits
+
 1. **Cost Efficiency**: Eliminates gas fees for end-users, reducing transaction costs and making it attractive for high-frequency or micro-transaction use cases.[https://www.xdc.dev/gaslimit/how-do-i-get-an-rpc-url-for-my-subnet-3pc5](https://www.xdc.dev/gaslimit/how-do-i-get-an-rpc-url-for-my-subnet-3pc5)
 2. **Privacy**: Subnets can be configured as private networks, ensuring data and transactions are accessible only to authorized parties, ideal for sensitive business applications.[https://test.xinfin.org/xdc-subnet](https://test.xinfin.org/xdc-subnet)
 3. **Scalability**: Supports high-throughput, low-latency transactions, with the capacity for up to 2000 transactions per second, suitable for enterprise-grade applications.[https://xinfin.org/](https://xinfin.org/)
@@ -96,6 +100,7 @@ graph TD
 8. **Enterprise-Friendly**: Supports tokenization of real-world assets (RWAs) and non-tangible assets, facilitating use cases like trade finance, decentralized finance (DeFi), and digital contracts.[https://coinmarketcap.com/currencies/xdc-network/](https://coinmarketcap.com/currencies/xdc-network/)
 
 ## Dependencies
+
 1. **XDC Mainnet**: Subnets rely on the XDC mainnet for checkpointing consensus data to enhance security, requiring a stable and operational mainnet.[https://www.xinfin.io/xdc-subnet](https://www.xinfin.io/xdc-subnet)
 2. **Infrastructure**: Operators need to set up and maintain nodes (e.g., validator or masternodes) for the subnet, which may require hardware or cloud resources.[https://web.archive.org/web/20200511161325/https://xinfin.org/resources.php](https://web.archive.org/web/20200511161325/https://xinfin.org/resources.php)
 3. **Technical Expertise**: Configuring and managing a subnet requires knowledge of blockchain technology, Docker, and network setup (e.g., RPC endpoints, APIs).[https://www.xdc.dev/gaslimit/how-do-i-get-an-rpc-url-for-my-subnet-3pc5](https://www.xdc.dev/gaslimit/how-do-i-get-an-rpc-url-for-my-subnet-3pc5)
@@ -105,6 +110,7 @@ graph TD
 7. **Regulatory Compliance**: For enterprise use, subnets may need to integrate KYC/AML features or comply with jurisdictional regulations.[https://github.com/XinFinOrg/XDPoSChain](https://github.com/XinFinOrg/XDPoSChain)
 
 ## Security Issues
+
 1. **Subnet Node Compromise**: If subnet nodes are poorly secured (e.g., weak private key management), attackers could disrupt operations or manipulate transactions within the subnet.[https://test.xinfin.org/xdc-subnet](https://test.xinfin.org/xdc-subnet)
 2. **Mainnet Dependency**: While subnets inherit mainnet security, a catastrophic failure or attack on the XDC mainnet could indirectly affect subnet trust.[https://www.xinfin.io/xdc-subnet](https://www.xinfin.io/xdc-subnet)
 3. **Configuration Risks**: Incorrect subnet configurations (e.g., improper access controls) could lead to unauthorized access or data leaks.[https://www.xinfin.org/xdc-subnet](https://www.xinfin.org/xdc-subnet)
@@ -113,6 +119,7 @@ graph TD
 6. **Limited Validator Diversity**: With only 108 active validator masternodes (as of Jan 2025), centralization risks could impact mainnet security, indirectly affecting subnets.[https://coinmarketcap.com/currencies/xdc-network/](https://coinmarketcap.com/currencies/xdc-network/)
 
 ## Implementation Process
+
 1. **Planning**:
    - Define use case (e.g., trade finance, digital asset tokenization, supply chain).
    - Determine subnet requirements (privacy, transaction volume, access control).
@@ -139,7 +146,9 @@ graph TD
    - Engage with the XDC community for support via the XDC Forum or Telegram.[https://test.xinfin.org/xdc-subnet](https://test.xinfin.org/xdc-subnet)
 
 ## Applicability to Non-Tangible Business Services and Products
+
 The XDC gasless subnet is highly suitable for non-tangible business services and products due to its flexibility, privacy, and cost-efficiency. Examples include:
+
 1. **Digital Contracts and Agreements**:
    - Smart contracts on subnets can automate non-tangible services like legal agreements, licensing, or subscription services, with gasless transactions reducing user friction.
    - Example: A SaaS platform could use a subnet to manage subscription renewals without transaction fees.
@@ -160,4 +169,5 @@ The XDC gasless subnet is highly suitable for non-tangible business services and
    - Example: A gaming platform issuing virtual collectibles on a subnet.
 
 ## Conclusion
+
 The XDC gasless subnet offers a powerful, customizable blockchain solution for enterprises and developers, particularly for non-tangible services and products. Its cost-efficiency, privacy, and interoperability make it ideal for applications like DeFi, digital contracts, and data services. However, careful configuration and ongoing maintenance are critical to mitigate security risks and ensure robust performance. For detailed setup guides, refer to the XDC Network documentation ([https://docs.xdc.network/](https://docs.xdc.network/)) or community resources ([https://www.xdc.dev](https://www.xdc.dev)).

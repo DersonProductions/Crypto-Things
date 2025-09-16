@@ -16,9 +16,11 @@ This file contains starter code, commands, hints, and sample solutions for the e
 ## Beginner: Compile a Contract
 
 ### Exercise Prompt
+
 Write and compile the SimpleStorage contract using solc. Output the ABI and bytecode.
 
 ### Starter Code
+
 Create a file `SimpleStorage.sol` with this:
 
 ```solidity
@@ -33,11 +35,13 @@ contract SimpleStorage {
 ```
 
 ### Hints
+
 - Complete the functions: `set` takes a uint256 and sets `storedData`; `get` returns it as view.
 - Compile command: `solc --bin --abi SimpleStorage.sol > output.txt`.
 - Expected: Bytecode starts with `0x6080...`, ABI is a JSON array.
 
 ### Sample Solution
+
 Full contract (as in doc):
 
 ```solidity
@@ -67,9 +71,11 @@ Save ABI and bytecode for later exercises.
 ## Intermediate: Deploy via Geth Console
 
 ### Exercise Prompt
+
 Deploy the SimpleStorage contract on a dev chain using Geth's interactive console and retrieve the contract address.
 
 ### Starter Commands
+
 1. Start Geth dev mode: `geth --dev console --datadir ./devchain`.
 2. In console:
 
@@ -82,11 +88,13 @@ Deploy the SimpleStorage contract on a dev chain using Geth's interactive consol
 ```
 
 ### Hints
+
 - Use `eth.contract(abi).new({from: eth.accounts[0], data: bytecode, gas: 1000000})`.
 - Mine if needed: `miner.start(1); admin.sleepBlocks(1); miner.stop()`.
 - Check `deployed.transactionHash` for tx, then `deployed.address` after confirmation.
 
 ### Sample Solution
+
 In console:
 
 ```
@@ -101,9 +109,11 @@ Copy the address for advanced exercise.
 ## Advanced: web3.js Transaction
 
 ### Exercise Prompt
+
 Using web3.js in a Node.js script, broadcast a `set` transaction to the deployed contract and query `get` to verify.
 
 ### Starter Code
+
 Create `interact.js`:
 
 ```javascript
@@ -124,12 +134,14 @@ interact();
 ```
 
 ### Hints
+
 - Unlock account if needed, but in dev mode, it's often open.
 - Use `contract.methods.set(42).send({from: accounts[0], gas: 100000})`.
 - Then `contract.methods.get().call()` for read.
 - Run: `node interact.js`. Expected: Stored value: 42.
 
 ### Sample Solution
+
 Complete function:
 
 ```javascript
@@ -149,6 +161,7 @@ async function interact() {
 This demonstrates full lifecycle: Deploy (intermediate) → Interact.
 
 ## Further Challenges
+
 - Add privacy: Deploy with `privateFor` in Quorum (link to 05-blockchain-quorum.md).
 - Error handling: Add try-catch for tx failures.
 - Staking contract: Modify to include a stake function (preview 12-staking-and-interest-bearing-actions.md).

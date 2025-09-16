@@ -79,6 +79,9 @@ Data is grouped into **blocks**, each containing:
 Blocks are chained via hashes, forming a **blockchain**. If you alter Block 5, its hash changes, breaking links to Block 6 and beyond.
 
 #### Simplified Blockchain Structure
+
+Below is an example showing blockchain structure.  both as structured text and as a diagram so the two formats match.
+
 ```
 Block 1
 - Hash: ABC123
@@ -91,16 +94,22 @@ Block 2
 - Previous Hash: ABC123
 - Transactions: [Tx3, Tx4]
 - Timestamp: 2025-09-14
+
+Block 3
+- Hash: GHI789
+- Previous Hash: DEF456
+- Transactions: [Tx5, Tx6]
+- Timestamp: 2025-09-15
+
+(Example hashes and transactions are illustrative.)
 ```
 
-Use tools like Mermaid for diagrams in advanced docs:
-
-```mermaid
+<div class="mermaid">
 graph LR
-    Genesis --> Block1[Block 1<br>Hash: ABC123<br>Prev: Genesis]
-    Block1 --> Block2[Block 2<br>Hash: DEF456<br>Prev: ABC123]
-    Block2 --> Block3[Block 3<br>Hash: GHI789<br>Prev: DEF456]
-```
+  Genesis --> Block1[Block 1<br>Hash: ABC123<br>Prev: Genesis]
+  Block1 --> Block2[Block 2<br>Hash: DEF456<br>Prev: ABC123]
+  Block2 --> Block3[Block 3<br>Hash: GHI789<br>Prev: DEF456]
+</div>
 
 ### 4. Consensus Mechanisms
 In decentralized ledgers (no single authority), nodes (computers) must agree on the ledger's state. Consensus prevents conflicts like double-spending.
@@ -110,12 +119,14 @@ In decentralized ledgers (no single authority), nodes (computers) must agree on 
 - **Others**: Delegated PoS, Byzantine Fault Tolerance.
 
 #### PoW vs. PoS
+
 | Mechanism | Energy Use | Security | Example |
 |-----------|------------|----------|---------|
 | PoW | High | High (computational) | Bitcoin |
 | PoS | Low | High (economic) | Cardano |
 
 ## How It All Fits Together
+
 1. A transaction occurs (e.g., "Alice → Bob: 10 units").
 2. Sign it with digital signature.
 3. Broadcast to network.
@@ -126,17 +137,20 @@ In decentralized ledgers (no single authority), nodes (computers) must agree on 
 This process ensures trust without a central bank.
 
 ## Common Applications
+
 - **Cryptocurrencies**: Bitcoin ledger tracks coin ownership.
 - **Supply Chain**: Track goods from farm to store (e.g., IBM Food Trust).
 - **Smart Contracts**: Self-executing code on ledgers (Ethereum).
 - **NFTs**: Unique digital assets on blockchains.
 
 ## Potential Challenges
+
 - Scalability: Blockchains can be slow (e.g., Bitcoin: ~7 tx/sec).
 - Energy Consumption: PoW's environmental impact.
 - Security Risks: 51% attacks (control majority of network).
 
 ## Next Steps
+
 - Try the basic hash example in [/examples/basic_hash.py](/examples/basic_hash.py).
 - Move to [/docs/02-algorithms.md](/docs/02-algorithms.md) for deeper dives into specific algos.
 - Practice with exercises in [/exercises](/exercises).

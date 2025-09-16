@@ -20,6 +20,7 @@ Building Quorum as a Service (QaaS) involves deploying Quorum networks on cloud 
 ## Basics of Cloud Computing and Containerization
 
 ### Cloud Computing
+
 Cloud models:
 - **IaaS**: Virtual machines (e.g., AWS EC2).
 - **PaaS**: Managed platforms (e.g., Heroku).
@@ -27,6 +28,7 @@ Cloud models:
 Benefits: Scalability, cost-efficiency, global access.
 
 ### Containerization
+
 Docker packages apps with dependencies into images. Key concepts:
 - **Images**: Read-only templates (e.g., `consensys/quorum:latest`).
 - **Containers**: Running instances.
@@ -50,6 +52,7 @@ graph LR
 ## Installing Minikube and Deploying Containers on Kubernetes
 
 ### Step-by-Step Guide
+
 1. **Install Minikube**: Download from kubernetes.io; run `minikube start --driver=docker` (uses Docker VM).
 2. **Verify**: `kubectl get nodes` (shows minikube-node ready).
 3. **Deploy a Container**: Use kubectl or Helm.
@@ -64,6 +67,7 @@ For Quorum: Use Helm charts from Quorum-Kubernetes repo.
 QNM automates Quorum node lifecycle (provision, join, manage). Integrate with K8s for QaaS.
 
 ### Setup
+
 1. Clone Quorum-Kubernetes: `git clone https://github.com/ConsenSys/quorum-kubernetes`.
 2. Install Helm: `helm repo add quorum https://charts.quorum.consensys.net`.
 3. Deploy: `helm install quorum quorum/quorum -f values.yaml` (customize for Raft/IBFT).
@@ -154,6 +158,7 @@ raft:
 ## Hands-On Examples
 
 ### Example 1: Minikube Quorum Deployment
+
 ```bash
 minikube start
 helm repo add quorum https://charts.quorum.consensys.net
@@ -164,7 +169,9 @@ kubectl get pods  # Verify Quorum pods
 Full script in `/examples/09-quorum-as-a-service-platform-example.sh`.
 
 ### Example 2: QNM Node Management
+
 YAML for QNM custom resource:
+
 ```yaml
 apiVersion: qnm.consensys.io/v1
 kind: QuorumNode
@@ -181,12 +188,15 @@ Apply: `kubectl apply -f node.yaml`.
 ## Exercises
 
 ### Beginner: Cloud/Container Quiz
+
 1. Differentiate IaaS vs. PaaS; explain Docker's role.
 
 ### Intermediate: Minikube Setup
+
 2. Install Minikube, deploy a sample pod, and expose it.
 
 ### Advanced: Quorum Helm Deploy
+
 3. Customize and deploy Quorum via Helm; scale to 3 nodes.
 
 Starters in `/exercises/09-quorum-as-a-service-platform-exercises.md`.
@@ -199,6 +209,7 @@ Starters in `/exercises/09-quorum-as-a-service-platform-exercises.md`.
 - Staking: Deploy staking services on orchestrated Quorum (12-staking-and-interest-bearing-actions.md).
 
 ## References and Further Reading
+
 - Deploy a GoQuorum private network with Kubernetes
 - Create a cluster - Kubernetes - ConsenSys GoQuorum
 - Hello Minikube | Kubernetes

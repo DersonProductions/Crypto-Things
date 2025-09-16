@@ -18,9 +18,11 @@ This file provides starter code, hints, and sample solutions for the exercises o
 ## Beginner: Install and Connect
 
 ### Exercise Prompt
+
 Install web3.js and connect to a local Geth node; log the chain ID.
 
 ### Starter Code
+
 Create `connect.js`:
 
 ```javascript
@@ -38,11 +40,13 @@ main();
 ```
 
 ### Hints
+
 - Install: `npm init -y && npm install web3`.
 - Check: `await web3.eth.net.isListening()`.
 - Chain ID: `await web3.eth.getChainId()` (e.g., 1337 for dev).
 
 ### Sample Solution
+
 Complete:
 
 ```javascript
@@ -67,9 +71,11 @@ Run: Should log "Connected to chain ID: 1337" (or your node's ID).
 ## Intermediate: Query Balance
 
 ### Exercise Prompt
+
 Retrieve and convert the balance of an account to Ether using web3.js.
 
 ### Starter Code
+
 Build on beginner; add to `connect.js`:
 
 ```javascript
@@ -83,11 +89,13 @@ async function main() {
 ```
 
 ### Hints
+
 - Balance: `await web3.eth.getBalance(address)` (in Wei).
 - Convert: `web3.utils.fromWei(balance, 'ether')`.
 - Expected: In dev, something like '1000000' ETH.
 
 ### Sample Solution
+
 Add:
 
 ```javascript
@@ -101,9 +109,11 @@ Output: Balance in readable ETH.
 ## Advanced: Send Transaction
 
 ### Exercise Prompt
+
 Sign and send a simple ETH transfer in Node.js using web3.js.
 
 ### Starter Code
+
 Extend `connect.js`:
 
 ```javascript
@@ -118,12 +128,14 @@ async function main() {
 ```
 
 ### Hints
+
 - Tx object: `{ from, to, value: web3.utils.toWei('1', 'ether') }`.
 - In dev, no unlock needed; else, use `web3.eth.personal.unlockAccount`.
 - Wait for receipt: `await web3.eth.sendTransaction(tx)`.
 - Verify: Query balances before/after.
 
 ### Sample Solution
+
 Add:
 
 ```javascript
@@ -140,6 +152,7 @@ Add:
 Test: Balances update after tx.
 
 ## Further Challenges
+
 - Client-side: Adapt for browser with MetaMask connection.
 - Subscriptions: Subscribe to new blocks via WebSocket.
 - Tie to staking: Send tx to a staking contract (link to 12-staking-and-interest-bearing-actions.md).

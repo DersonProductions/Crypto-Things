@@ -16,9 +16,11 @@ This file contains starter guides, code snippets, hints, and sample solutions fo
 ## Beginner: Research Patterns
 
 ### Exercise Prompt
+
 List 3 interoperability patterns and their pros/cons.
 
 ### Starter/Solution
+
 This is research-based. No code; use web search or docs.
 
 Sample response:
@@ -31,9 +33,11 @@ Research more via references in the doc.
 ## Intermediate: Set Up Dual Chains
 
 ### Exercise Prompt
+
 Launch two local Quorum nodes (as dual chains) and connect via web3.js.
 
 ### Starter Commands/Code
+
 Use the docker-compose from examples (adapt for two chains).
 
 1. Create `docker-compose.yml` (see examples for template).
@@ -54,11 +58,13 @@ connectChains();
 ```
 
 ### Hints
+
 - Ensure different network IDs in genesis files.
 - Verify: `await web3A.eth.getChainId()` and same for B.
 - Expected: Two connected instances.
 
 ### Sample Solution
+
 Complete:
 
 ```javascript
@@ -79,9 +85,11 @@ Run: Logs IDs (e.g., 1337 and 1338).
 ## Advanced: Implement Relay
 
 ### Exercise Prompt
+
 Build a simple JS relay for message passing between chains (e.g., simulate FedCoin transfer).
 
 ### Starter Code
+
 Extend `dual-chains.js`:
 
 ```javascript
@@ -98,12 +106,14 @@ async function relayMessage(fromChain, message) {
 ```
 
 ### Hints
+
 - Deploy a basic event-emitting contract on each chain (e.g., emit MessageSent).
 - Use subscriptions: `contractA.events.MessageSent().on('data', async (event) => { /* relay to B */ })`.
 - Relay: Call method on other chain.
 - For FedCoin: Burn on A, mint on B.
 
 ### Sample Solution
+
 Assuming contracts with `sendMessage(string)` emitting event.
 
 ```javascript
@@ -127,6 +137,7 @@ async function relayMessage(fromChain, message) {
 This simulates basic relay; secure for production.
 
 ## Further Challenges
+
 - Add HTLC: Implement time-locks in contracts.
 - Privacy: Use Quorum's privateFor in relays.
 - Staking: Relay staking actions across chains (link to 12-staking-and-interest-bearing-actions.md).

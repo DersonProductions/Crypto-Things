@@ -23,12 +23,14 @@ In the banking sector, efficient, secure, and permissioned payment systems are c
 Quorum's permissioning ensures only approved nodes join the network, vital for banks to prevent unauthorized access. It uses **Public Key Infrastructure (PKI)** for node authentication and **Access Control Lists (ACLs)** for transaction visibility.
 
 ### Key Concepts
+
 - **Node Permissioning**: Nodes must present a certificate signed by a trusted CA (Certificate Authority). Unapproved nodes are rejected during handshake.
 - **Transaction Permissioning**: Use `privateFor` in txs to limit visibility (e.g., only sender/receiver banks see details).
 - **Benefits**: Enhances privacy (beyond public Ethereum), complies with regs like GDPR/PSD2.
 - **Challenges**: Certificate management; scalability with many banks.
 
 ### Step-by-Step Implementation
+
 1. **Set Up CA**: Use tools like OpenSSL or HashiCorp Vault to generate a root CA.
    - Command: `openssl req -new -x509 -days 365 -keyout ca.key -out ca.crt -subj "/CN=MyBankCA"`.
    - Explanation: Creates self-signed CA cert/key for signing node certs. In prod, use HSM for key security.
@@ -52,7 +54,7 @@ For multi-bank: Use QNM (from 09) to automate cert issuance.
 
 #### Permissioning Flow Diagram
 
-```mermaid
+<div class="mermaid">
 graph LR
     CA'["Certificate Authority <br> (CA)"] -->|Sign Node CSR| Cert["Signed Certificate <br> (node.crt)"]
     Cert -->|Attach to Node Config| Join["Node Join Attempt <br> (Handshake with Network)"]
@@ -65,19 +67,21 @@ graph LR
     style Verify fill:#fbb,stroke:#333
     style Approved fill:#6f9,stroke:#333
     style Rejected fill:#f69,stroke:#333
-```
+</div>
 
 ## Building the Payment Solution
 
 We'll create a system where banks transfer funds via mobile numbers, resolved to on-chain addresses. Smart contract handles validation, privacy, and settlement.
 
 ### Architecture
+
 - **Off-Chain Resolver**: Map mobile → address (e.g., database; for demo, JSON).
 - **Smart Contract**: `PaymentBank` with `transfer(mobileTo, amount)`—checks permission, emits private event.
 - **Privacy**: Use `privateFor` for txs visible only to involved banks.
 - **UX**: Mobile app sends tx via wallet; backend resolves and broadcasts.
 
 ### Step-by-Step Development
+
 1. **Design Smart Contract (Solidity)**:
    - Features: Owner-only mint, transfer with mobile resolution, balance query.
    - Explanation: Mobile resolution off-chain to save gas; on-chain verifies sender permission.
@@ -141,6 +145,7 @@ We'll create a system where banks transfer funds via mobile numbers, resolved to
 ## Hands-On Examples
 
 ### Example 1: Node.js Transfer Script
+
 ```javascript
 const Web3 = require('web3');
 const Tx = require('ethereumjs-tx').Transaction;
@@ -185,6 +190,7 @@ bankTransfer('+1234567890', 100);
 - Explanation: Resolves mobile, encodes call, signs off-chain, broadcasts privately. Run: `node transfer.js`.
 
 ### Example 2: Python Resolver and Tx
+
 ```python
 from web3 import Web3
 import json
@@ -217,12 +223,15 @@ bank_transfer('+1234567890', 100)
 ## Exercises
 
 ### Beginner: Permissioning Setup
+
 1. Generate a CA and node cert; configure a Quorum node to use it.
 
 ### Intermediate: Contract Deployment
+
 2. Deploy PaymentBank; register a mobile and mint initial balance.
 
 ### Advanced: Private Transfer
+
 3. Implement a transfer with privateFor; verify only involved parties see it.
 
 Starters in `/exercises/11-payment-solutions-for-banks-exercises.md`.
@@ -235,6 +244,7 @@ Starters in `/exercises/11-payment-solutions-for-banks-exercises.md`.
 - **Other Services**: Adapt for tax payments—transfer "tax credits" via mobile to IRS; for fiduciary, escrow trusts with permissioned access.
 
 ## References and Further Reading
+
 - Quorum Permissioning: https://docs.goquorum.consensys.io/security/permissioning
 - Private Transactions: https://docs.goquorum.consensys.io/privacy/private-transactions
 - Mobile Money on Blockchain: https://www.gsma.com/mobilefordevelopment/wp-content/uploads/2023/05/Blockchain-for-Mobile-Money.pdf

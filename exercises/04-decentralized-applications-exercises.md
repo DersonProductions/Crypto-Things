@@ -15,9 +15,11 @@ This file contains starter code, hints, and partial solutions for the exercises 
 ## Beginner: Research and Summarize
 
 ### Exercise Prompt
+
 List 3 real-world DApps and their blockchains. Explain one benefit each.
 
 ### Starter/Solution
+
 This is a research-based exercise. No code needed, but here's a sample response to guide you:
 
 1. **Uniswap** on Ethereum: A decentralized exchange for swapping tokens. Benefit: Eliminates intermediaries, reducing fees and enabling permissionless trading.
@@ -29,9 +31,11 @@ Research more using resources like DAppRadar or CoinMarketCap. Write your list i
 ## Intermediate: Setup and Connect
 
 ### Exercise Prompt
+
 Install `web3.py` and modify the example to fetch the latest block number from Ethereum mainnet. Expected output: A number > 20,000,000.
 
 ### Starter Code
+
 Start with this script (based on the doc's example). You'll need an Infura or Alchemy API key—sign up for free.
 
 ```python
@@ -55,11 +59,13 @@ else:
 ```
 
 ### Hints
+
 - After connecting, access the block number with `w3.eth.block_number`.
 - Expected output example (as of 2025): Something like 21000000 or higher.
 - If you get rate-limited, switch to a testnet like Sepolia for practice.
 
 ### Sample Solution
+
 Add this line after the connection check:
 
 ```python
@@ -72,9 +78,11 @@ Run it: Should print "Latest block number: [large number]".
 ## Advanced: Build a Mini-DApp
 
 ### Exercise Prompt
+
 Extend the simulation to include user authentication (e.g., via mock signatures from 01-basics.md). Prevent double-voting.
 
 ### Starter Code
+
 Build on the simple voting DApp simulation from the doc. Add a user system with mock signatures for authenticity.
 
 ```python
@@ -113,12 +121,14 @@ sig = dapp.generate_mock_signature(message)
 ```
 
 ### Hints
+
 - Message for signing: Combine option and user_id to prevent replay attacks.
 - Use `self.voted_users.add(user_id)` after successful vote.
 - Raise errors for invalid signature or repeat votes (e.g., ValueError).
 - For real-world, use ECDSA from `ecdsa` library (as in 01-basics.md).
 
 ### Sample Solution
+
 Implement the `vote` method like this:
 
 ```python
@@ -144,6 +154,7 @@ Test it:
 This simulates a secure, decentralized voting mechanism. Extend to actual blockchain by deploying as a smart contract (see 06-smart-contracts.md).
 
 ## Further Challenges
+
 - Integrate with real Ethereum: Replace mock sig with wallet signing using `eth_account`.
 - Add staking: Require users to "stake" mock tokens to vote (link to 12-staking-and-interest-bearing-actions.md).
 - Visualize results: Use matplotlib to plot vote counts.

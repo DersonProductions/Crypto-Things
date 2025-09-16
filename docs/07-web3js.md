@@ -29,17 +29,21 @@ web3.js provides modules for Ethereum's JSON-RPC API, including `eth` for accoun
 ## Importing and Connecting to Geth
 
 ### Installation
+
 For Node.js: `npm install web3`.
 For client-side: Include via CDN `<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>` or bundle with webpack.
 
 ### Connecting
+
 In Node.js:
+
 ```javascript
 const Web3 = require('web3');
 const web3 = new Web3('http://localhost:8545'); // Geth HTTP RPC
 ```
 
 In browser (client-side):
+
 ```javascript
 const web3 = new Web3(window.ethereum); // MetaMask provider
 // Or: new Web3('wss://mainnet.infura.io/ws/v3/YOUR_KEY');
@@ -52,8 +56,10 @@ For Geth/Quorum: Use IPC for local: `new Web3('/path/to/geth.ipc')`.
 ## Using web3.js in Node.js or Client-Side JavaScript
 
 ### Node.js Usage
+
 Server-side for bots/scripts: Query balances, send txs.
 Example: Get balance.
+
 ```javascript
 async function getBalance(address) {
   const balance = await web3.eth.getBalance(address);
@@ -62,8 +68,10 @@ async function getBalance(address) {
 ```
 
 ### Client-Side Usage
+
 Browser for DApps: Connect wallet, interact with UI.
 Example: Request accounts via MetaMask.
+
 ```javascript
 async function connectWallet() {
   const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
@@ -75,7 +83,7 @@ Handle events: Subscribe to new blocks with WebSocket.
 
 #### web3.js Connection Diagram
 
-```mermaid
+<div class="mermaid">
 graph LR
     A["JavaScript App <br> (Node.js or Browser)"] -->|Imports & Uses| B["web3.js Library"]
     B -->|Initializes with| C["Provider <br> (HTTP, WebSocket, IPC)"]
@@ -86,11 +94,12 @@ graph LR
     style C fill:#b0b,stroke:#333
     style D fill:#f0b,stroke:#333
     style E fill:#00f,stroke:#333
-```
+</div>
 
 ## Hands-On Examples
 
 ### Example 1: Node.js Connection and Query
+
 ```javascript
 const Web3 = require('web3');
 const web3 = new Web3('http://localhost:8545');
@@ -108,7 +117,9 @@ main();
 Full script in `/examples/07-web3js-example.js`.
 
 ### Example 2: Client-Side Wallet Connection
+
 In HTML/JS:
+
 ```html
 <button onclick="connect()">Connect Wallet</button>
 <script>
@@ -128,12 +139,15 @@ async function connect() {
 ## Exercises
 
 ### Beginner: Install and Connect
+
 1. Install web3.js and connect to a local Geth node; log the chain ID.
 
 ### Intermediate: Query Balance
+
 2. Retrieve and convert the balance of an account to Ether.
 
 ### Advanced: Send Transaction
+
 3. Sign and send a simple ETH transfer in Node.js.
 
 Starters in `/exercises/07-web3js-exercises.md`.
@@ -145,6 +159,7 @@ Starters in `/exercises/07-web3js-exercises.md`.
 - For staking: Use web3.js to interact with staking contracts (12-staking-and-interest-bearing-actions.md).
 
 ## References and Further Reading
+
 - Official web3.js Docs: https://docs.web3js.org/
 - Getting Started Guide: https://docs.web3js.org/guides/getting_started/quickstart/
 - Beginner Tutorial: https://medium.com/@gupta27/getting-started-with-web3-js-a-beginners-guide-f59149f4e84d

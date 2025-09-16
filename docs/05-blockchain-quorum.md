@@ -87,7 +87,7 @@ We'll use the ConsenSys quorum-examples repo (deprecated but functional; conside
 
 ### Quorum Raft Network Diagram
 
-```mermaid
+<div class="mermaid">
 graph TD
     subgraph RaftCluster["Quorum Raft Network"]
         Leader["Leader Node <br> (Handles requests, replicates logs)"]
@@ -113,11 +113,12 @@ graph TD
     style F4 fill:#000,stroke:#333
     style Client fill:#09f,stroke:#333
     style RaftCluster fill:none,stroke:#aaa,stroke-dasharray:5
-```
+</div>
 
 ## Hands-On Examples
 
 ### Example 1: Connecting to Quorum Node in Python
+
 Use `web3.py` to connect (similar to 04). Install: `pip install web3`.
 
 ```python
@@ -136,17 +137,21 @@ else:
 Full script in `/examples/05-blockchain-quorum-example.py`.
 
 ### Example 2: Simple Private Transaction Simulation
+
 In geth console: Send a private tx using `privateFor`.
 
 ## Exercises
 
 ### Beginner: Setup Verification
+
 1. Clone and start the network; confirm 7 containers running.
 
 ### Intermediate: Node Interaction
+
 2. Attach to a node and list peers.
 
 ### Advanced: Custom Network
+
 3. Reduce to 4 nodes; adjust configs and restart.
 
 Starters in `/exercises/05-blockchain-quorum-exercises.md`.
@@ -158,6 +163,7 @@ Starters in `/exercises/05-blockchain-quorum-exercises.md`.
 - For staking: Quorum's permissioned model can include staking-like voting; see 12-staking-and-interest-bearing-actions.md.
 
 ## References and Further Reading
+
 - ConsenSys Quorum Docs: https://consensys.io/quorum/docs
 - Quorum Examples Repo: https://github.com/ConsenSys/quorum-examples
 - "Quorum Blockchain Tutorial" on 101Blockchains

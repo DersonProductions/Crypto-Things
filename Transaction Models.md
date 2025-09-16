@@ -14,14 +14,14 @@ The Unspent Transaction Output (UTXO) model is a transaction accounting system p
 
 Here's a diagram illustrating a simple UTXO transaction flow:
 
-```mermaid
+<div class="mermaid">
 graph TD
     A["UTXO1: 10 BTC<br>(from previous tx)"] -->|Input| B[Transaction]
     C["UTXO2: 5 BTC<br>(from previous tx)"] -->|Input| B
     B -->|Output| D["New UTXO: 12 BTC<br>(to recipient)"]
     B -->|Output| E["Change UTXO: 3 BTC<br>(back to sender)"]
     style B fill:#e00,stroke:#333,stroke-width:2px
-```
+</div>
 
 ### Account-Based Model
 
@@ -40,15 +40,16 @@ The Account-based model, popularized by Ethereum, treats the ledger like a bank 
 
 Here's a diagram for an Account-based transaction:
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[Sender Account<br>Balance: 15 ETH<br>Nonce: 5] -->|Transaction: Send 10 ETH| B[Blockchain State Update]
     B -->|Debit| AUpdated[Sender Account<br>Balance: 5 ETH<br>Nonce: 6]
     B -->|Credit| C["Recipient Account<br>Balance: 10 ETH (increased)"]
     style B fill:#e00,stroke:#333,stroke-width:2px
-```
+</div>
 
 ### Extended UTXO (eUTXO) Model
+
 The eUTXO model is an extension of the traditional UTXO model, designed to support smart contracts while retaining UTXO benefits. It's used in Cardano.
 
 - **How it works**:
@@ -63,19 +64,20 @@ The eUTXO model is an extension of the traditional UTXO model, designed to suppo
 
 Here's a diagram for an eUTXO transaction:
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[UTXO1: 10 ADA<br>with Validator Script] -->|Input + Datum| B[Transaction]
     C[UTXO2: 5 ADA] -->|Input| B
     B -->|Validate Script| D[New UTXO: 12 ADA<br>with New Datum]
     B -->|Output| E[Change UTXO: 3 ADA]
     style B fill:#e00,stroke:#333,stroke-width:2px
-```
+</div>
 
 ### Differences between Models
+
 To highlight differences, here's a comparative flowchart showing how each model processes a transaction:
 
-```mermaid
+<div class="mermaid">
 flowchart LR
     subgraph UTXO
         U1[Consume UTXOs] --> U2[Create New UTXOs]
@@ -92,9 +94,10 @@ flowchart LR
     UTXO -->|Parallel, Stateless| Diff[Differences: Privacy vs. Programmability]
     Account-Based -->|Sequential, Stateful| Diff
     eUTXO -->|Hybrid: Parallel + Scripts| Diff
-```
+</div>
 
 ### Table Outlining Differences
+
 | Aspect                  | UTXO Model                          | Account-Based Model                 | eUTXO Model                         |
 |-------------------------|-------------------------------------|-------------------------------------|-------------------------------------|
 | **State Representation**| Discrete unspent outputs (no accounts) | Balances in accounts                | UTXOs with attached scripts/data    |
@@ -106,6 +109,7 @@ flowchart LR
 | **Examples**            | Bitcoin                            | Ethereum                            | Cardano                             |
 
 ### Connection to Current Blockchains
+
 - **Bitcoin (UTXO)**: Bitcoin uses UTXO for its focus on being a simple, secure store of value. The model emphasizes immutability and prevents double-spending without complex state management, aligning with Bitcoin's design as "digital gold." It avoids account states to minimize attack surfaces and enhance verifiability in a decentralized network.
 
 - **Ethereum (Account-Based)**: Ethereum adopted this model to enable Turing-complete smart contracts and decentralized applications (dApps). The stateful nature allows complex interactions like DeFi protocols, where contracts maintain persistent data. It's chosen for developer friendliness, though it leads to challenges like high gas fees during congestion—addressed in upgrades like Ethereum 2.0 for better scalability.
@@ -124,15 +128,19 @@ These models are selected based on the blockchain's goals: UTXO for security-foc
 ---
 
 ### XRP (Ripple Ledger)
+
 The XRP Ledger, which powers the XRP cryptocurrency, follows an **account-based model** rather than a UTXO model. In this system, balances are tracked directly in accounts (similar to Ethereum), where transactions debit from the sender's account and credit the recipient's. This design supports Ripple's focus on fast cross-border payments and liquidity provision, allowing for efficient state management without the need for tracking individual unspent outputs. The account model enables features like payment channels and escrows, which are integral to Ripple's ecosystem.
 
 ### XLM (Stellar)
+
 Stellar Lumens (XLM) also uses an **account-based model**, akin to Ethereum. Accounts maintain balances, and transactions update these balances directly while incorporating a minimum balance requirement (currently around 0.5 XLM per base reserve) to prevent spam. This model suits Stellar's emphasis on affordable, inclusive financial services, such as remittances and asset tokenization, by simplifying multi-asset transactions and built-in decentralized exchange functionality.
 
 ### XDC (XinFin Network)
+
 The XDC Network follows an **account-based model**, as it is EVM-compatible and built on a hybrid architecture inspired by Ethereum and Quorum. Transactions operate by updating account balances, supporting smart contracts and decentralized applications. This choice aligns with XinFin's enterprise focus on trade finance and supply chain solutions, leveraging delegated proof-of-stake (XDPoS) for efficiency while maintaining compatibility with Ethereum tools for broader adoption.
 
 ### Why These Blockchains Use the Account-Based Model
+
 - **Alignment with Goals**: Unlike UTXO-based chains (e.g., Bitcoin) focused on simple value storage, XRP, XLM, and XDC prioritize complex financial operations like payments, asset issuance, and smart contracts. The account-based model simplifies state tracking for these features, making it easier to handle persistent data and sequential transactions.
 - **Efficiency for Payments**: All three are designed for fast, low-cost transfers (e.g., cross-border for XRP and XLM, enterprise for XDC), where direct balance updates reduce complexity compared to managing UTXOs.
 - **Smart Contract Support**: The model enables stateful execution, crucial for XDC's EVM compatibility and the programmable aspects in Stellar and Ripple.
