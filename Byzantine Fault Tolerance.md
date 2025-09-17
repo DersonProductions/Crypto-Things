@@ -242,30 +242,25 @@ graph TD
     A --> C{PoS}
     A --> D{PoA}
     A --> E{PBFT}
-
     B --> B1[Miners Solve Puzzle]
     B1 --> B2[Longest Chain Rule]
     B2 --> B3[Block Added]
     B3 --> F[Consensus]
-
     C --> C1[Validators Stake]
     C1 --> C2[Random Selection]
     C2 --> C3[Vote/Attest Block]
     C3 --> C4[Slashing for Faults]
     C4 --> F
-
     D --> D1[Authorities Validate]
     D1 --> D2[Majority Agreement]
     D2 --> D3[Block Added]
     D3 --> F
-
     E --> E1[Primary Proposes]
     E1 --> E2[Pre-Prepare Phase]
     E2 --> E3[Prepare Phase]
     E3 --> E4[Commit Phase]
     E4 --> E5[2/3 Agreement]
     E5 --> F
-
     F --> G[Update Blockchain]
 </div>
 

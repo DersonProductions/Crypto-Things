@@ -42,15 +42,14 @@ DApps interact with blockchains using libraries like web3.js (covered in later d
 
 #### DApp Architecture Diagram
 
-```mermaid
+<div class="mermaid">
 graph LR
     A["User / Frontend <br> (e.g., Web/Mobile App)"] -->|Interacts via UI| B["Web3 Library <br> (e.g., web3.js or web3.py)"]
     B -->|Sends Transactions/Calls| C["Smart Contract <br> (e.g., Solidity Code)"]
     C -->|Executes on| D["Blockchain Network <br> (e.g., Ethereum Nodes)"]
     D -->|Stores Data| E["On-Chain Storage <br> (Critical Data)"]
     D -.->|Links to| F["Off-Chain Storage <br> (e.g., IPFS for Files)"]
-    
-```
+</div>
 
 ## Core Components of DApps
 

@@ -38,7 +38,7 @@ Kubernetes (K8s) orchestrates containers across clusters for auto-scaling and lo
 
 #### Cloud to K8s Flow Diagram
 
-```mermaid
+<div class="mermaid">
 graph LR
     A["Application Code <br> (e.g., Quorum App)"] -->|Package into| B["Docker Image/Container <br> (Portable Environment)"]
     B -->|Deploy & Manage with| C["Kubernetes (K8s) <br> (Orchestration for Scaling/Auto-healing)"]
@@ -47,7 +47,7 @@ graph LR
     style B fill:#b0f,stroke:#333
     style C fill:#b0b,stroke:#333
     style D fill:#f0b,stroke:#333
-```
+</div>
 
 ## Installing Minikube and Deploying Containers on Kubernetes
 

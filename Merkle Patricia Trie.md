@@ -43,6 +43,7 @@ Disadvantages:
 - **Overhead**: Hash computations add CPU load.
 
 ### Diagram: Simplified MPT Structure
+
 Here's a visual representation of an MPT storing example key-value pairs (keys as hex strings for simplicity, e.g., "a1" -> value1, "a2" -> value2, "b" -> value3). The diagram shows node types and hash propagation.
 
 <div class="mermaid">
@@ -129,6 +130,7 @@ SHAMap and MPT are both Merkle-ized tries for blockchain state, but differ in de
 | **Efficiency Focus**    | Fast deltas for consensus           | Compact storage for sparse data       |
 
 ### Diagram: Simplified SHAMap Structure
+
 Here's a visual of a basic SHAMap storing example key-value pairs (keys as hex for simplicity, e.g., "a1" -> value1, "a2" -> value2). Note the fixed branching and hash propagation without compression.
 
 <div class="mermaid">
@@ -357,7 +359,7 @@ Bitcoin's approach is transaction-centric, differing from account-based tries by
 | **Efficiency Focus**    | Inclusion proofs, fast DB lookups   | Fast deltas for consensus           | In-memory updates, catchup          | Compact sparse data                 |
 | **Verification**        | Per-block Merkle proofs              | Path-based Merkle proofs            | Bucket hashes for sync              | Path-based Merkle proofs            |
 
-### Mermaid Diagram: Simplified Merkle Tree + UTXO Flow
+### Diagram: Simplified Merkle Tree + UTXO Flow
 
 Here's a visual of a Merkle Tree in a block and how it ties to UTXO updates (e.g., tx consumes UTXOs, creates new ones).
 

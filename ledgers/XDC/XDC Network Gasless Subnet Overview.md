@@ -15,34 +15,28 @@ graph TD
     subgraph " "
         MN[Master Nodes<br>Blockchain<br>Public<br>Private]
     end
-
     subgraph Network1_1[Network 1]
         N1_1_BC[Blockchain] --> N1_1_Pub[Public]
         N1_1_BC --> N1_1_Priv[Private]
     end
-
     subgraph Network1_2[Network 1]
         N1_2_BC[Blockchain] --> N1_2_Pub[Public]
         N1_2_BC --> N1_2_Priv[Private]
     end
-
     subgraph Network1_3[Network 1]
         N1_3_BC[Blockchain] --> N1_3_Pub[Public]
         N1_3_BC --> N1_3_Priv[Private]
     end
-
     subgraph Network2_1[Network 2]
         N2_1_BC[Blockchain] --> N2_1_Pub[Public]
         N2_1_BC --> N2_1_Priv1[Private]
         N2_1_BC --> N2_1_Priv2[Private]
     end
-
     subgraph Network2_2[Network 2]
         N2_2_BC[Blockchain] --> N2_2_Pub[Public]
         N2_2_BC --> N2_2_Priv1[Private]
         N2_2_BC --> N2_2_Priv2[Private]
     end
-
     MN -->|...| Network1_1
     MN -->|...| Network1_2
     MN -->|...| Network1_3
@@ -55,28 +49,23 @@ graph TD
 ##Clients and dApps in the XDC Ecosystem
 Clients (end-users or entities) interact with the XDC Network through decentralized applications (dApps), which can be deployed on either the mainnet or a subnet. The mainnet provides a public, secure backbone, while subnets offer customized environments (e.g., gasless transactions, privacy). The diagram below shows how clients, dApps, subnets, and the mainnet interact, including the checkpointing process that ensures subnet security.
 
-```mermaid
+<div class="mermaid">
 graph TD
     Clients[Clients]
-
     subgraph dApps
         dApp_Mainnet[dApp on Mainnet]
         dApp_Subnet[dApp on Subnet]
     end
-
     subgraph XDC_Network
         subgraph Mainnet
             Mainnet_Nodes[Mainnet Nodes<br>Validators: XDPoS 2.0]
             Mainnet_SC[Smart Contract<br>Checkpoint Verification]
         end
-
         subgraph Subnet
             Subnet_Nodes[Subnet Nodes<br>Gasless Transactions]
         end
-
         Relayer[Relayer]
     end
-
     Clients -->|Interact| dApp_Mainnet
     Clients -->|Interact| dApp_Subnet
     dApp_Mainnet -->|Execute| Mainnet_Nodes
@@ -84,7 +73,7 @@ graph TD
     Subnet_Nodes -->|Checkpoint| Relayer
     Relayer -->|Verify| Mainnet_SC
     Mainnet_SC -->|Secure| Mainnet_Nodes
-```
+</div>
 
 *Figure 2: Clients and dApps Interaction with Subnets and Mainnet*
 
