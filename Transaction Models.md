@@ -1,3 +1,8 @@
+---
+layout: default
+title: Transaction Models
+---
+
 ### UTXO Model
 The Unspent Transaction Output (UTXO) model is a transaction accounting system primarily used in cryptocurrencies like Bitcoin. In this model, every transaction output represents a discrete "coin" or amount of cryptocurrency that has not yet been spent. These unspent outputs (UTXOs) are the building blocks of the ledger.
 

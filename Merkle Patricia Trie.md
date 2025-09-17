@@ -1,3 +1,8 @@
+---
+layout: default
+title: Merkle Patricia Trie
+---
+
 # Merkle Patricia Trie (MPT)
 
 A Merkle Patricia Trie (MPT), also known as a Merkle Patricia Tree, is a specialized data structure that combines the efficiency of a Patricia Trie (a compact radix trie for storing and retrieving key-value pairs) with the cryptographic security of a Merkle Tree (a hash-based tree for data integrity verification). This hybrid design allows for efficient storage, updates, and proofs of large datasets, making it particularly suited for blockchain environments where data must be verifiable, tamper-resistant, and accessible with minimal overhead.
