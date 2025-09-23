@@ -87,6 +87,8 @@ graph TD
 
 **Explanation**: PoA uses identity verification for BFT, tolerating up to 50% faults if authorities remain honest, ideal for permissioned networks.
 
+Example Script: [examples/consensus_simulator.py](./examples/consensus_simulator.pys)
+
 ## Practical Byzantine Fault Tolerance (PBFT): Classic Reliability
 
 PBFT, introduced in 1999, is a foundational BFT algorithm adapted for blockchains like Hyperledger Fabric and Zilliqa. It operates in phases—pre-prepare, prepare, and commit—where nodes exchange messages to agree on transaction order.
@@ -199,6 +201,8 @@ graph TD
 These protocols adapt BFT to specific needs, from public decentralization to enterprise efficiency.
 
 ## Comparison of BFT Protocols
+
+![Consensus thresholds (N=108)e](./imgs/bft/bft_consensus_comparison.png)
 
 | Protocol | Fault Tolerance Threshold | Key Strengths | Key Weaknesses | Example Blockchains |
 |----------|---------------------------|---------------|----------------|---------------------|
